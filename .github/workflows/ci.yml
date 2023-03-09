@@ -3,13 +3,14 @@ on: [push]
 
 jobs:
   build:
-    name: Test
+    name: Continous Integration
     runs-on: ubuntu-latest
     steps:
+      - name: Move to right folder
+        run: "cd frontend"
+
       - uses: actions/checkout@v3
 
-      - name: Move to right folder
-        run: 'cd frontend'
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -19,6 +20,7 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
+
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
