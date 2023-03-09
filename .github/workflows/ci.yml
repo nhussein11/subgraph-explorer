@@ -6,10 +6,10 @@ jobs:
     name: Continous Integration
     runs-on: ubuntu-latest
     steps:
-      - name: Move to right folder
-        run: "cd frontend"
-
       - uses: actions/checkout@v3
+
+      - name: Move to right folder
+        run: "cd ./frontend"
 
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
