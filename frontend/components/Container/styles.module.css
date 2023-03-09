@@ -1,0 +1,21 @@
+.navbar {
+  height: 60px;
+  border-bottom: 1px solid var(--general-border);
+  color: var(--primary-font);
+  padding: 20px;
+}
+
+.mainContainer {
+  padding: 30px;
+  min-height: 100vh;
+  color: var(--primary-font);
+  width: 100%;
+}
+
+.mainContainer h1 {
+  margin-bottom: 20px;
+}
+
+.mainContainer h2 {
+  margin-bottom: 20px;
+}
