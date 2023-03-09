@@ -8,9 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Move to right folder
-        run: "cd ./frontend"
-
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -23,5 +20,6 @@ jobs:
 
       - name: Build production bundle
         uses: borales/actions-yarn@v4
+        run: "cd ./frontend"
         with:
           cmd: build
