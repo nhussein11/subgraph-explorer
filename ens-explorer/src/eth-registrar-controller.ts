@@ -1,4 +1,3 @@
-// This file was generated automatically by graph-cli.
 import {
   NameRegistered as NameRegisteredEvent,
   NameRenewed as NameRenewedEvent,
