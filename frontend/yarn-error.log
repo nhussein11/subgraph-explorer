@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @graphprotocol/client-urql
+  /usr/local/bin/node /usr/local/bin/yarn add @graphql-mesh/utils@latest
 
 PATH: 
   /home/nhussein11/.cargo/bin:/home/nhussein11/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nhussein11/.dotnet/tools:/home/nhussein11/.oh-my-zsh/custom/plugins/fzf-zsh-plugin/bin:/home/nhussein11/.fzf/bin:/home/nhussein11/.oh-my-zsh/custom/plugins/fzf-zsh-plugin/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/home/nhussein11/workspace/ens-app/frontend/node_modules/@graphprotocol/client-urql'
+  Error: EACCES: permission denied, mkdir '/home/nhussein11/workspace/ens-app/frontend/node_modules/@graphql-mesh/cli/node_modules/@graphql-mesh'
 
 npm manifest: 
   {
@@ -44,6 +44,7 @@ npm manifest:
     },
     "devDependencies": {
       "@graphprotocol/client-cli": "^2.2.20",
+      "@graphprotocol/client-urql": "^1.0.16",
       "@typescript-eslint/eslint-plugin": "^5.54.1",
       "eslint-config-prettier": "^8.7.0",
       "husky": "^8.0.3",
@@ -673,6 +674,14 @@ Lockfile:
       "@repeaterjs/repeater" "^3.0.4"
       tslib "^2.4.0"
   
+  "@graphprotocol/client-urql@^1.0.16":
+    version "1.0.16"
+    resolved "https://registry.yarnpkg.com/@graphprotocol/client-urql/-/client-urql-1.0.16.tgz#d929e4ce9cd4293e45a1cc9088bfe190f682d0d9"
+    integrity sha512-vQt+1KDGLzSgD3uEUEYH4TAZUERshYyI1GGj9N7WTWjukSTENk42ww/UwdTT51ECbPdst+hI+CvDAKjK7ejLZw==
+    dependencies:
+      "@graphql-mesh/urql-exchange" "10.0.2"
+      tslib "^2.4.0"
+  
   "@graphql-codegen/core@3.1.0":
     version "3.1.0"
     resolved "https://registry.npmjs.org/@graphql-codegen/core/-/core-3.1.0.tgz"
@@ -1029,6 +1038,14 @@ Lockfile:
       "@graphql-tools/delegate" "9.0.28"
       "@graphql-tools/utils" "9.2.1"
       "@graphql-typed-document-node/core" "3.1.2"
+      tslib "^2.4.0"
+  
+  "@graphql-mesh/urql-exchange@10.0.2":
+    version "10.0.2"
+    resolved "https://registry.yarnpkg.com/@graphql-mesh/urql-exchange/-/urql-exchange-10.0.2.tgz#30838c64cb445ce127d94757337111b01e8aa6db"
+    integrity sha512-M7B5SplO/MqU5WubFpaddTP85XgTvDjS0LhasxmAnl9j3X8NzEX39YI4Iy1xfikt//s+n1GO51bs5AjTQO7+RQ==
+    dependencies:
+      "@graphql-tools/utils" "9.2.1"
       tslib "^2.4.0"
   
   "@graphql-mesh/utils@0.43.15":

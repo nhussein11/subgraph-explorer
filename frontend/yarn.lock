@@ -1006,6 +1006,23 @@
     tiny-lru "8.0.2"
     tslib "^2.4.0"
 
+"@graphql-mesh/utils@^0.43.15":
+  version "0.43.15"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.43.15.tgz#9c59ff09a300276a54c3a6889f170d6818e74700"
+  integrity sha512-SxWw3K/K0n9WaPtqkyJTh9HuQuDmrGAFJrC+sBiC76mkBpDrcVP1EnCu7ugOimDOrqK0IAtLFIPYl/+RDk/N9g==
+  dependencies:
+    "@graphql-mesh/cross-helpers" "0.3.3"
+    "@graphql-mesh/string-interpolation" "0.4.2"
+    "@graphql-mesh/types" "0.91.7"
+    "@graphql-tools/delegate" "9.0.28"
+    "@graphql-tools/utils" "9.2.1"
+    dset "3.1.2"
+    js-yaml "4.1.0"
+    lodash.get "4.4.2"
+    lodash.topath "4.5.2"
+    tiny-lru "8.0.2"
+    tslib "^2.4.0"
+
 "@graphql-tools/batch-delegate@8.4.21":
   version "8.4.21"
   resolved "https://registry.npmjs.org/@graphql-tools/batch-delegate/-/batch-delegate-8.4.21.tgz"
