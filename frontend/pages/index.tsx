@@ -1,5 +1,9 @@
 import Head from 'next/head'
 import Container from '@components/Container'
+import LastTranctions from '@components/LastTransactions'
+
+import { client, ssrCache } from '@utils/urqlClient'
+import { NameRegisteredQueryDocument } from '@/.graphclient'
 
 export default function Home() {
   return (
@@ -11,8 +15,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container title="ENS Explorer">
-        <p>Home page</p>
+        <LastTranctions />
       </Container>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  console.log('executing server side props')
+  await client.query(NameRegisteredQueryDocument, {}).toPromise()
+  console.log('ssrCache', ssrCache)
+  return {
+    props: { urqlState: ssrCache.extractData() },
+  }
 }
