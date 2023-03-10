@@ -1,15 +1,12 @@
 import '@/styles/globals.css'
+import { client, ssrCache } from '@utils/urqlClient'
 import type { AppProps } from 'next/app'
-import { createClient, Provider } from 'urql'
-import { graphExchange } from '@graphprotocol/client-urql'
-import * as GraphClient from '../.graphclient'
-
-const client = createClient({
-  url: 'http://localhost:4000/graphql',
-  exchanges: [graphExchange(GraphClient)],
-})
+import { Provider } from 'urql'
 
 export default function App({ Component, pageProps }: AppProps) {
+  if (pageProps.urqlState) {
+    ssrCache.restoreData(pageProps.urqlState)
+  }
   return (
     <Provider value={client}>
       <Component {...pageProps} />
