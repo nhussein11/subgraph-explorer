@@ -1,0 +1,10 @@
+query NameRegisteredQuery {
+  nameRegistereds(first: 20, orderBy: blockTimestamp, orderDirection: desc) {
+    id
+    name
+    label
+    owner
+    blockNumber
+    cost
+  }
+}
