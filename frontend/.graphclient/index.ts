@@ -6,6 +6,9 @@ import {
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from 'graphql'
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+import { gql } from '@graphql-mesh/utils'
+
 import type { GetMeshOptions } from '@graphql-mesh/runtime'
 import type { YamlConfig } from '@graphql-mesh/types'
 import { PubSub } from '@graphql-mesh/utils'
@@ -17,6 +20,7 @@ import { MeshResolvedSource } from '@graphql-mesh/runtime'
 import { MeshTransform, MeshPlugin } from '@graphql-mesh/types'
 import GraphqlHandler from '@graphql-mesh/graphql'
 import BareMerger from '@graphql-mesh/merger-bare'
+import { printWithCache } from '@graphql-mesh/utils'
 import { createMeshHTTPHandler, MeshHTTPHandler } from '@graphql-mesh/http'
 import {
   getMesh,
@@ -1208,7 +1212,15 @@ export async function getMeshOptions(): Promise<GetMeshOptions> {
     logger,
     additionalEnvelopPlugins,
     get documents() {
-      return []
+      return [
+        {
+          document: NameRegisteredQueryDocument,
+          get rawSDL() {
+            return printWithCache(NameRegisteredQueryDocument)
+          },
+          location: 'NameRegisteredQueryDocument.graphql',
+        },
+      ]
     },
     fetchFn,
   }
@@ -1246,3 +1258,63 @@ export const execute: ExecuteMeshFn = (...args) =>
 
 export const subscribe: SubscribeMeshFn = (...args) =>
   getBuiltGraphClient().then(({ subscribe }) => subscribe(...args))
+export function getBuiltGraphSDK<TGlobalContext = any, TOperationContext = any>(
+  globalContext?: TGlobalContext
+) {
+  const sdkRequester$ = getBuiltGraphClient().then(({ sdkRequesterFactory }) =>
+    sdkRequesterFactory(globalContext)
+  )
+  return getSdk<TOperationContext, TGlobalContext>((...args) =>
+    sdkRequester$.then((sdkRequester) => sdkRequester(...args))
+  )
+}
+export type NameRegisteredQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type NameRegisteredQueryQuery = {
+  nameRegistereds: Array<
+    Pick<
+      NameRegistered,
+      'id' | 'name' | 'label' | 'owner' | 'blockNumber' | 'cost'
+    >
+  >
+}
+
+export const NameRegisteredQueryDocument = gql`
+  query NameRegisteredQuery {
+    nameRegistereds(first: 20, orderBy: blockTimestamp, orderDirection: desc) {
+      id
+      name
+      label
+      owner
+      blockNumber
+      cost
+    }
+  }
+` as unknown as DocumentNode<
+  NameRegisteredQueryQuery,
+  NameRegisteredQueryQueryVariables
+>
+
+export type Requester<C = {}, E = unknown> = <R, V>(
+  doc: DocumentNode,
+  vars?: V,
+  options?: C
+) => Promise<R> | AsyncIterable<R>
+export function getSdk<C, E>(requester: Requester<C, E>) {
+  return {
+    NameRegisteredQuery(
+      variables?: NameRegisteredQueryQueryVariables,
+      options?: C
+    ): Promise<NameRegisteredQueryQuery> {
+      return requester<
+        NameRegisteredQueryQuery,
+        NameRegisteredQueryQueryVariables
+      >(
+        NameRegisteredQueryDocument,
+        variables,
+        options
+      ) as Promise<NameRegisteredQueryQuery>
+    },
+  }
+}
+export type Sdk = ReturnType<typeof getSdk>
