@@ -1,0 +1,5 @@
+sources:
+  - name: ETHRegistrarController
+    handler:
+      graphql:
+        endpoint: https://api.studio.thegraph.com/query/43355/ens-explorer/0.0.1
