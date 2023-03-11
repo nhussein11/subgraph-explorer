@@ -21,11 +21,11 @@ export default function LastTranctions() {
   >[] = [
     {
       key: 'name',
-      header: 'Name',
+      header: 'Name Registered',
     },
     {
       key: 'owner',
-      header: 'Owner',
+      header: 'Owner Address',
     },
     {
       key: 'label',
