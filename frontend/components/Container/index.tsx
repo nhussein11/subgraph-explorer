@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './styles.module.css'
 import Link from 'next/link'
+import SwitchThemeButton from '@components/SwitchThemeButton'
 
 type ContainerProps = {
   title: string
@@ -10,12 +11,15 @@ type ContainerProps = {
 export default function Container({ title, children }: ContainerProps) {
   return (
     <>
+      <h1 className="text-3xl">hello</h1>
       <nav className={'text-3xl font-bold underline decoration-2'}>
-        <Link href="/">ENS Explorer</Link>
+        <Link href="/" className="text-3xl">
+          {title}
+        </Link>
       </nav>
       <main className={style.mainContainer}>
         <section>
-          <h2>{title}</h2>
+          <SwitchThemeButton />
           {children}
         </section>
       </main>

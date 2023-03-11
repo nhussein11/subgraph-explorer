@@ -1,14 +1,15 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'class', // enable dark mode
   content: [
-    // './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  ], // add this line
   theme: {
-    // typography: (_theme) => ({}),
-    extend: {},
+    extend: {
+      colors: {
+        'dark-blue': '#22283D',
+        white: '#ffffff',
+      },
+    },
   },
-  plugins: [require('@tailwindcss/typography')],
 }
