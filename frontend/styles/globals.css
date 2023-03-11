@@ -1,4 +1,8 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+root {
   --general-border: #e7eaf3;
   --font-primary: #001001;
   --general-background: #f8f9fa;
