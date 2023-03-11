@@ -13,16 +13,12 @@ export type TableProps<T, K extends keyof T> = {
   columns: Array<ColumnDefinitionType<T, K>>
 }
 
-const style = {
-  borderCollapse: 'collapse',
-} as const
-
 const Table = <T, K extends keyof T>({
   data,
   columns,
 }: TableProps<T, K>): JSX.Element => {
   return (
-    <table style={style}>
+    <table className="table-auto border-separate border border-slate-500">
       <TableHeader columns={columns} />
       <TableRows data={data} columns={columns} />
     </table>

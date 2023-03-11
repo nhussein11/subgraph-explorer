@@ -10,7 +10,7 @@ type ContainerProps = {
 export default function Container({ title, children }: ContainerProps) {
   return (
     <>
-      <nav className={style.navbar}>
+      <nav className={'text-3xl font-bold underline decoration-2'}>
         <Link href="/">ENS Explorer</Link>
       </nav>
       <main className={style.mainContainer}>

@@ -29,6 +29,7 @@
   "devDependencies": {
     "@graphprotocol/client-cli": "^2.2.16",
     "@graphprotocol/client-urql": "^1.0.13",
+    "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "autoprefixer": "^10.4.14",
     "eslint-config-prettier": "^8.7.0",
