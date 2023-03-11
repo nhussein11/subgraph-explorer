@@ -1,5 +1,3 @@
-// components/DarkModeButton.js
-
 import { useState } from 'react'
 
 export default function SwitchThemeButton() {
@@ -13,7 +11,7 @@ export default function SwitchThemeButton() {
   return (
     <button
       onClick={handleDarkModeToggle}
-      className={`px-4 py-2 border border-black-700 rounded-lg ${
+      className={`col-end-7 col-span-2 w-16 ml-10 border  border-neutral-200 rounded-lg ${
         isDarkMode ? 'bg-white text-dark-blue' : 'bg-dark-blue text-white'
       }`}
     >

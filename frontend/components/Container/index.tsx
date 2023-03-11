@@ -11,17 +11,17 @@ type ContainerProps = {
 export default function Container({ title, children }: ContainerProps) {
   return (
     <>
-      <h1 className="text-3xl">hello</h1>
-      <nav className={'text-3xl font-bold underline decoration-2'}>
-        <Link href="/" className="text-3xl">
+      <nav className={'grid grid-cols-6 gap-4 mb-6'}>
+        <Link
+          href="/"
+          className=" col-start-1 col-end-3 text-3xl font-bold underline decoration-2"
+        >
           {title}
         </Link>
+        <SwitchThemeButton />
       </nav>
       <main className={style.mainContainer}>
-        <section>
-          <SwitchThemeButton />
-          {children}
-        </section>
+        <section>{children}</section>
       </main>
     </>
   )
