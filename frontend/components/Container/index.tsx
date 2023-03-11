@@ -11,7 +11,11 @@ type ContainerProps = {
 export default function Container({ title, children }: ContainerProps) {
   return (
     <>
-      <nav className={'grid grid-cols-6 gap-4 mb-6'}>
+      <nav
+        className={
+          'grid grid-cols-6 gap-4 mb-6 pb-2 border-b-2 border-gray-300'
+        }
+      >
         <Link
           href="/"
           className=" col-start-1 col-end-3 text-3xl font-bold underline decoration-2"
