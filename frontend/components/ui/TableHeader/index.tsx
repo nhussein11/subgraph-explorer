@@ -10,11 +10,14 @@ const TableHeader = <T, K extends keyof T>({
   const headers = columns.map((column, index) => {
     const style = {
       width: column.width ?? 100, // 100 is our default value if width is not defined
-      borderBottom: '2px solid black',
     }
 
     return (
-      <th key={`headCell-${index}`} style={style}>
+      <th
+        key={`headCell-${index}`}
+        style={style}
+        className="text-xl underline underline-offset-4"
+      >
         {column.header}
       </th>
     )

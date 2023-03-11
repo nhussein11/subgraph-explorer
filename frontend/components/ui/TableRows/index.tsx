@@ -6,10 +6,6 @@ type TableRowsProps<T, K extends keyof T> = {
   columns: Array<ColumnDefinitionType<T, K>>
 }
 
-const style = {
-  border: '1px solid black',
-}
-
 const TableRows = <T, K extends keyof T>({
   data,
   columns,
@@ -19,7 +15,7 @@ const TableRows = <T, K extends keyof T>({
       <tr key={`row-${index}`}>
         {columns.map((column, index2) => {
           return (
-            <td key={`cell-${index2}`} style={style}>
+            <td key={`cell-${index2}`} className="text-center text-md">
               {row[column.key] as ReactNode}
             </td>
           )

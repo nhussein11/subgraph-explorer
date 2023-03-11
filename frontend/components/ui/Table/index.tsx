@@ -18,10 +18,12 @@ const Table = <T, K extends keyof T>({
   columns,
 }: TableProps<T, K>): JSX.Element => {
   return (
-    <table className="table-auto border-separate border border-slate-500">
-      <TableHeader columns={columns} />
-      <TableRows data={data} columns={columns} />
-    </table>
+    <div className="container m-4 ">
+      <table className="table-auto border-separate mb-6 pb-2">
+        <TableHeader columns={columns} />
+        <TableRows data={data} columns={columns} />
+      </table>
+    </div>
   )
 }
 
