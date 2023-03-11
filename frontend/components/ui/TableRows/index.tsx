@@ -15,7 +15,7 @@ const TableRows = <T, K extends keyof T>({
       <tr key={`row-${index}`}>
         {columns.map((column, index2) => {
           return (
-            <td key={`cell-${index2}`} className="text-center text-md">
+            <td key={`cell-${index2}`} className="text-center text-md pt-2">
               {row[column.key] as ReactNode}
             </td>
           )
