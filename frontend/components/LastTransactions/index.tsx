@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from 'urql'
 import { NameRegisteredQueryDocument } from '@/.graphclient'
+import { NameRegistered } from '@/global/types'
 
 export default function LastTranctions() {
   const [result] = useQuery({
@@ -21,13 +22,15 @@ export default function LastTranctions() {
         </tr>
       </thead>
       <tbody>
-        {data?.nameRegistereds.map((contract) => (
-          <tr key={contract.id}>
-            <td>{contract.name}</td>
-            <td>{contract.owner}</td>
-            <td>{contract.label}</td>
-          </tr>
-        ))}
+        {data?.nameRegistereds.map((contract: NameRegistered) => {
+          return (
+            <tr key={contract.id}>
+              <td>{contract.name}</td>
+              <td>{contract.owner}</td>
+              <td>{contract.label}</td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   )
