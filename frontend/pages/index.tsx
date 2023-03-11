@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Container from '@components/Container'
-import LastTranctions from '@components/LastTransactions'
 
 import { client, ssrCache } from '@utils/urqlClient'
 import { NameRegisteredQueryDocument } from '@/.graphclient'
+import LastTransactions from '@components/LastTransactions'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container title="ENS Explorer">
-        <LastTranctions />
+        <LastTransactions />
       </Container>
     </>
   )

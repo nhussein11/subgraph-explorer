@@ -5,7 +5,7 @@ import { NameRegisteredQueryDocument } from '@/.graphclient'
 import Table, { ColumnDefinitionType } from '@components/ui/Table'
 import { NameRegisteredTable } from '@/global/types'
 
-export default function LastTranctions() {
+export default function LastTransactions() {
   const [result] = useQuery({
     query: NameRegisteredQueryDocument,
   })
