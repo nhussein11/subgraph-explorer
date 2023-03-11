@@ -6,3 +6,8 @@ export interface NameRegistered {
   name: string
   owner: string
 }
+
+export type NameRegisteredTable = Pick<
+  NameRegistered,
+  'label' | 'name' | 'owner'
+>
