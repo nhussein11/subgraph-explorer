@@ -12,5 +12,23 @@ export default function LastTranctions() {
   if (fetching) return <div>loading</div>
   if (error) return <div>error</div>
 
-  return <div>{JSON.stringify(data)}</div>
+  return (
+    <table>
+      <thead>
+        <tr>
+          {' '}
+          <th>Name</th> <th>Owner</th> <th>Label</th>{' '}
+        </tr>
+      </thead>
+      <tbody>
+        {data?.nameRegistereds.map((contract) => (
+          <tr key={contract.id}>
+            <td>{contract.name}</td>
+            <td>{contract.owner}</td>
+            <td>{contract.label}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
 }
