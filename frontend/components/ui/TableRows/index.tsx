@@ -12,7 +12,7 @@ const TableRows = <T, K extends keyof T>({
 }: TableRowsProps<T, K>): JSX.Element => {
   const rows = data.map((row, index) => {
     return (
-      <tr key={`row-${index}`}>
+      <tr key={`row-${index}`} className="border-b-2 border-slate-700">
         {columns.map((column, index2) => {
           return (
             <td key={`cell-${index2}`} className="text-center text-md pt-2">
