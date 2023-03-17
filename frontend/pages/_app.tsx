@@ -1,3 +1,4 @@
+import { SettingsProvider } from '@/context'
 import '@/styles/globals.css'
 import { client, ssrCache } from '@utils/urqlClient'
 import type { AppProps } from 'next/app'
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   return (
     <Provider value={client}>
-      <Component {...pageProps} />
+      <SettingsProvider>
+        <Component {...pageProps} />
+      </SettingsProvider>
     </Provider>
   )
 }

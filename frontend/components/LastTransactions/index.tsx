@@ -35,5 +35,10 @@ export default function LastTransactions() {
 
   const dataTable = data?.nameRegistereds as NameRegisteredTable[]
 
-  return <Table data={dataTable} columns={columns} />
+  return (
+    <div className="container mx-8">
+      <h2 className="text-2xl font-bold italic mb-5">Last Transactions</h2>
+      <Table data={dataTable} columns={columns} />
+    </div>
+  )
 }
