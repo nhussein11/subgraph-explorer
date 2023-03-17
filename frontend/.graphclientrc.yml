@@ -6,3 +6,7 @@ sources:
 
 documents:
   - ./queries/ens-names-registered.graphql
+
+transforms:
+  - blockTracking:
+      validateSchema: true
