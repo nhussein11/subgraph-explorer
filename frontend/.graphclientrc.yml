@@ -4,9 +4,17 @@ sources:
       graphql:
         endpoint: https://api.studio.thegraph.com/query/43355/ens-explorer/0.0.1
 
+    transforms:
+      - blockTracking:
+        validateSchema: true
+
+      - autopagination:
+          validateSchema: true
+          limitOfRecords: 3000
+
 documents:
   - ./queries/ens-names-registered.graphql
 
-transforms:
-  - blockTracking:
-      validateSchema: true
+plugins:
+  - pollingLive:
+      defaultInterval: 1000

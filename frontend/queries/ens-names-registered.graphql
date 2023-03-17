@@ -1,4 +1,4 @@
-query NameRegisteredQuery {
+query NameRegisteredQuery @live {
   nameRegistereds(first: 20, orderBy: blockTimestamp, orderDirection: desc) {
     id
     name
