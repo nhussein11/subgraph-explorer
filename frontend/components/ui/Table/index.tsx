@@ -13,18 +13,13 @@ export type TableProps<T, K extends keyof T> = {
   columns: Array<ColumnDefinitionType<T, K>>
 }
 
-const Table = <T, K extends keyof T>({
-  data,
-  columns,
-}: TableProps<T, K>): JSX.Element => {
-  return (
-    <div className="container">
-      <table className="table-auto border-separate mx-8 mb-6 pb-2">
-        <TableHeader columns={columns} />
-        <TableRows data={data} columns={columns} />
-      </table>
-    </div>
-  )
-}
+const Table = <T, K extends keyof T>({ data, columns }: TableProps<T, K>) => (
+  <div className="container">
+    <table className="table-auto border-separate mx-8 mb-6 pb-2">
+      <TableHeader columns={columns} />
+      <TableRows data={data} columns={columns} />
+    </table>
+  </div>
+)
 
 export default Table

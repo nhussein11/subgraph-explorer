@@ -6,10 +6,11 @@ type TableHeaderProps<T, K extends keyof T> = {
 
 const TableHeader = <T, K extends keyof T>({
   columns,
-}: TableHeaderProps<T, K>): JSX.Element => {
+}: TableHeaderProps<T, K>) => {
   const headers = columns.map((column, index) => {
     const style = {
-      width: column.width ?? 100, // 100 is our default value if width is not defined
+      // In my case, I decided to use 100 as a default width
+      width: column.width ?? 100,
     }
 
     return (

@@ -9,7 +9,7 @@ type TableRowsProps<T, K extends keyof T> = {
 const TableRows = <T, K extends keyof T>({
   data,
   columns,
-}: TableRowsProps<T, K>): JSX.Element => {
+}: TableRowsProps<T, K>) => {
   const rows = data.map((row, index) => {
     return (
       <tr
