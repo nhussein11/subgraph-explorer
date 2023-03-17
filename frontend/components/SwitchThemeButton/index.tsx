@@ -5,8 +5,8 @@ import { useSettingsContext } from '@/context'
 export default function SwitchThemeButton() {
   const { settings, toggleTheme } = useSettingsContext()
   const isDarkMode = settings.theme === 'dark'
+
   function handleDarkModeToggle() {
-    // modify context here
     toggleTheme()
     document.body.classList.toggle('dark-mode')
   }
