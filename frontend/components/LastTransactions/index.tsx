@@ -1,16 +1,16 @@
 import React from 'react'
 import { useQuery } from 'urql'
-import { NameRegisteredQueryDocument } from '@/.graphclient'
+import { TokensByUsersQueryDocument } from '@/.graphclient'
 
 import Table, { ColumnDefinitionType } from '@components/ui/Table'
 import { NameRegisteredTable } from '@/global/types'
 
 export default function LastTransactions() {
   const [result] = useQuery({
-    query: NameRegisteredQueryDocument,
+    query: TokensByUsersQueryDocument,
   })
 
-  const { data, error, fetching } = result
+  const { error, fetching } = result
 
   if (fetching) return <div>loading</div>
   if (error) return <div>error</div>
@@ -32,8 +32,9 @@ export default function LastTransactions() {
       header: 'Label',
     },
   ]
-
-  const dataTable = data?.nameRegistereds as NameRegisteredTable[]
+  const dataTable = [] as NameRegisteredTable[]
+  // TODO:  use something like this:
+  // const dataTable = data?.users
 
   return (
     <div className="container mx-8">

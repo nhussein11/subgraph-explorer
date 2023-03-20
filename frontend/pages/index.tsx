@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Container from '@components/Container'
 
 import { client, ssrCache } from '@utils/urqlClient'
-import { NameRegisteredQueryDocument } from '@/.graphclient'
+import { TokensByUsersQueryDocument } from '@/.graphclient'
 import LastTransactions from '@components/LastTransactions'
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
 
 export async function getServerSideProps() {
   console.log('executing server side props')
-  await client.query(NameRegisteredQueryDocument, {}).toPromise()
+  await client.query(TokensByUsersQueryDocument, {}).toPromise()
   console.log('ssrCache', ssrCache)
   return {
     props: { urqlState: ssrCache.extractData() },
