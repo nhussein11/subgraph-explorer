@@ -3,7 +3,7 @@ import Container from '@components/Container'
 
 import { client, ssrCache } from '@utils/urqlClient'
 import { TokensByUsersQueryDocument } from '@/.graphclient'
-import LastTransactions from '@components/LastTransactions'
+import TokensByUsers from '@components/TokensByUsers'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container title="ENS Explorer">
-        <LastTransactions />
+        <TokensByUsers />
       </Container>
     </>
   )
