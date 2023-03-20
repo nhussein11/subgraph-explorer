@@ -911,7 +911,7 @@ export type TokensByUsersQueryQuery = {
 
 export const TokensByUsersQueryDocument = gql`
   query TokensByUsersQuery {
-    users(first: 5) {
+    users(first: 10) {
       id
       tokens {
         tokenId

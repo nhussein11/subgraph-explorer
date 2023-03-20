@@ -10,7 +10,7 @@ export default function TokensByUsers() {
     query: TokensByUsersQueryDocument,
   })
 
-  const { error, fetching } = result
+  const { data, error, fetching } = result
 
   if (fetching) return <div>loading</div>
   if (error) return <div>error</div>
@@ -23,16 +23,18 @@ export default function TokensByUsers() {
       key: 'id',
       header: 'User',
     },
-    {
-      key: 'tokens',
-      header: 'Token Id',
-    },
-    {
-      key: 'tokens',
-      header: 'Content URI',
-    },
+    // {
+    //   key: 'tokens',
+    //   header: 'Token Id',
+    // },
+    // {
+    //   key: 'tokens',
+    //   header: 'Content URI',
+    // },
   ]
-  const dataTable = [] as TokensByUsersType[]
+  console.log('data users', data?.users)
+  const dataTable = data?.users as TokensByUsersType[]
+  // const dataTable = data?.users as TokensByUsersType[]
   // TODO:  use something like this instead:
   // const dataTable = data?.users
 

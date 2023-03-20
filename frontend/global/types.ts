@@ -23,3 +23,7 @@ export interface Token {
   metadataURI: string
   createdAtTimestamp: string
 }
+
+// i need a type that involves id from TokensByUsers and tokenId, contentURI and metadataURI from Token
+export type TokenTable = Pick<TokensByUsers, 'id'> &
+  Pick<Token, 'tokenId' | 'contentURI' | 'metadataURI'>
