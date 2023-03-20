@@ -3,7 +3,7 @@ import { useQuery } from 'urql'
 import { TokensByUsersQueryDocument } from '@/.graphclient'
 
 import Table, { ColumnDefinitionType } from '@components/ui/Table'
-import { NameRegisteredTable } from '@/global/types'
+import { TokensByUsers } from '@/global/types'
 
 export default function LastTransactions() {
   const [result] = useQuery({
@@ -15,25 +15,22 @@ export default function LastTransactions() {
   if (fetching) return <div>loading</div>
   if (error) return <div>error</div>
 
-  const columns: ColumnDefinitionType<
-    NameRegisteredTable,
-    keyof NameRegisteredTable
-  >[] = [
+  const columns: ColumnDefinitionType<TokensByUsers, keyof TokensByUsers>[] = [
     {
-      key: 'name',
-      header: 'Name Registered',
+      key: 'id',
+      header: 'User',
     },
     {
-      key: 'owner',
-      header: 'Owner Address',
+      key: 'tokens',
+      header: 'Token Id',
     },
     {
-      key: 'label',
-      header: 'Label',
+      key: 'tokens',
+      header: 'Content URI',
     },
   ]
-  const dataTable = [] as NameRegisteredTable[]
-  // TODO:  use something like this:
+  const dataTable = [] as TokensByUsers[]
+  // TODO:  use something like this instead:
   // const dataTable = data?.users
 
   return (
