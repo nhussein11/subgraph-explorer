@@ -1,17 +1,3 @@
-export interface NameRegistered {
-  blockNumber: string
-  cost: string
-  id: string
-  label: string
-  name: string
-  owner: string
-}
-
-export type NameRegisteredTable = Pick<
-  NameRegistered,
-  'label' | 'name' | 'owner'
->
-
 export interface TokensByUsers {
   id: string
   tokens: Token[]
@@ -24,15 +10,5 @@ export interface Token {
   createdAtTimestamp: string
 }
 
-// i need a type that involves id from TokensByUsers and tokenId, contentURI and metadataURI from Token
-// TODO: create a type that involves id from TokensByUsers and tokenId, contentURI and metadataURI from Token
-// export type TokenTable = Pick<TokensByUsers, 'id'> &
-//   Pick<Token, 'tokenId' | 'contentURI' | 'metadataURI'>
-//
-export interface TokenTable {
-  id: string
-  tokenId: string[]
-  contentURI: string[]
-  metadataURI: string[]
-  createdAtTimestamp: string[]
-}
+export type TokenTable = Pick<TokensByUsers, 'id'> &
+  Record<keyof Token, Array<Token[keyof Token]>>

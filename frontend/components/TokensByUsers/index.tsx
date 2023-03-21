@@ -51,7 +51,7 @@ export default function TokensByUsers() {
         .slice(0, 10),
       metadataURI: user.tokens.map((token) => token.metadataURI).slice(0, 10),
     }
-  }) as Array<TokenTable>
+  }) as TokenTable[]
 
   return (
     <div className="container mx-8 ">
