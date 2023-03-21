@@ -1,3 +1,4 @@
+// import { useSettingsContext } from '@/context'
 import React, { ReactNode } from 'react'
 import { ColumnDefinitionType } from '../Table'
 
@@ -11,10 +12,19 @@ const TableRows = <T, K extends keyof T>({
   columns,
 }: TableRowsProps<T, K>) => {
   const rows = data.map((row, index) => {
+    // TODO: Probably, to do somehting like this I'll need to use some management state tool
+    // const {
+    //   settings: { theme },
+    // } = useSettingsContext()
+    // TODO: hardcoded value to remember to change it
+    const theme = 'dark'
+
     return (
       <tr
         key={`row-${index}`}
-        className="border-double border-b-2 border-sky-500 hover:bg-gray-600"
+        className={` border-double border-b-2 border-sky-500 ${
+          theme !== 'dark' ? 'hover:bg-gray-600' : 'hover:bg-gray-200'
+        }`}
       >
         {columns.map((column, index2) => {
           if (
