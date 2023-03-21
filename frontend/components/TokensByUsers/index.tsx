@@ -53,6 +53,8 @@ export default function TokensByUsers() {
     }
   }) as TokenTable[]
 
+  // TODO: add const tableRowsChildren -> to determine from this component HOW to render the table rows
+
   return (
     <div className="container mx-8 ">
       <h2 className="text-2xl font-bold italic mb-5">Tokens by Users</h2>
