@@ -1,13 +1,14 @@
-export interface NameRegistered {
-  blockNumber: string
-  cost: string
+export interface TokensByUsers {
   id: string
-  label: string
-  name: string
-  owner: string
+  tokens: Token[]
 }
 
-export type NameRegisteredTable = Pick<
-  NameRegistered,
-  'label' | 'name' | 'owner'
->
+export interface Token {
+  tokenId: string
+  contentURI: string
+  metadataURI: string
+  createdAtTimestamp: string
+}
+
+export type TokenTable = Pick<TokensByUsers, 'id'> &
+  Record<keyof Token, Array<Token[keyof Token]>>

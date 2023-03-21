@@ -1,20 +1,21 @@
 sources:
-  - name: ETHRegistrarController
+  - name: TokenSubgraph
     handler:
       graphql:
-        endpoint: https://api.studio.thegraph.com/query/43355/ens-explorer/0.0.1
-
-    transforms:
-      - blockTracking:
-        validateSchema: true
-
-      - autopagination:
-          validateSchema: true
-          limitOfRecords: 3000
+        endpoint: https://api.studio.thegraph.com/query/43355/explorer-subgraph/v0.0.1
 
 documents:
-  - ./queries/ens-names-registered.graphql
+  - ./queries/tokens-by-users.graphql
 
-plugins:
-  - pollingLive:
-      defaultInterval: 1000
+    # transforms:
+    #   - blockTracking:
+    #     validateSchema: true
+
+    # - autopagination:
+    #     validateSchema: true
+    #     limitOfRecords: 3000
+# documents:
+#   - ./queries/tokens-by-users.graphql
+# plugins:
+#   - pollingLive:
+#       defaultInterval: 1000

@@ -32,7 +32,7 @@ import {
 import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store'
 import { path as pathModule } from '@graphql-mesh/cross-helpers'
 import { ImportFn } from '@graphql-mesh/types'
-import type { EthRegistrarControllerTypes } from './sources/ETHRegistrarController/types'
+import type { TokenSubgraphTypes } from './sources/TokenSubgraph/types'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -70,462 +70,46 @@ export type Block_height = {
   number_gte?: InputMaybe<Scalars['Int']>
 }
 
-export type NameRegistered = {
-  id: Scalars['Bytes']
-  name: Scalars['String']
-  label: Scalars['Bytes']
-  owner: Scalars['Bytes']
-  cost: Scalars['BigInt']
-  expires: Scalars['BigInt']
-  blockNumber: Scalars['BigInt']
-  blockTimestamp: Scalars['BigInt']
-  transactionHash: Scalars['Bytes']
-}
-
-export type NameRegistered_filter = {
-  id?: InputMaybe<Scalars['Bytes']>
-  id_not?: InputMaybe<Scalars['Bytes']>
-  id_gt?: InputMaybe<Scalars['Bytes']>
-  id_lt?: InputMaybe<Scalars['Bytes']>
-  id_gte?: InputMaybe<Scalars['Bytes']>
-  id_lte?: InputMaybe<Scalars['Bytes']>
-  id_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_contains?: InputMaybe<Scalars['Bytes']>
-  id_not_contains?: InputMaybe<Scalars['Bytes']>
-  name?: InputMaybe<Scalars['String']>
-  name_not?: InputMaybe<Scalars['String']>
-  name_gt?: InputMaybe<Scalars['String']>
-  name_lt?: InputMaybe<Scalars['String']>
-  name_gte?: InputMaybe<Scalars['String']>
-  name_lte?: InputMaybe<Scalars['String']>
-  name_in?: InputMaybe<Array<Scalars['String']>>
-  name_not_in?: InputMaybe<Array<Scalars['String']>>
-  name_contains?: InputMaybe<Scalars['String']>
-  name_contains_nocase?: InputMaybe<Scalars['String']>
-  name_not_contains?: InputMaybe<Scalars['String']>
-  name_not_contains_nocase?: InputMaybe<Scalars['String']>
-  name_starts_with?: InputMaybe<Scalars['String']>
-  name_starts_with_nocase?: InputMaybe<Scalars['String']>
-  name_not_starts_with?: InputMaybe<Scalars['String']>
-  name_not_starts_with_nocase?: InputMaybe<Scalars['String']>
-  name_ends_with?: InputMaybe<Scalars['String']>
-  name_ends_with_nocase?: InputMaybe<Scalars['String']>
-  name_not_ends_with?: InputMaybe<Scalars['String']>
-  name_not_ends_with_nocase?: InputMaybe<Scalars['String']>
-  label?: InputMaybe<Scalars['Bytes']>
-  label_not?: InputMaybe<Scalars['Bytes']>
-  label_gt?: InputMaybe<Scalars['Bytes']>
-  label_lt?: InputMaybe<Scalars['Bytes']>
-  label_gte?: InputMaybe<Scalars['Bytes']>
-  label_lte?: InputMaybe<Scalars['Bytes']>
-  label_in?: InputMaybe<Array<Scalars['Bytes']>>
-  label_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  label_contains?: InputMaybe<Scalars['Bytes']>
-  label_not_contains?: InputMaybe<Scalars['Bytes']>
-  owner?: InputMaybe<Scalars['Bytes']>
-  owner_not?: InputMaybe<Scalars['Bytes']>
-  owner_gt?: InputMaybe<Scalars['Bytes']>
-  owner_lt?: InputMaybe<Scalars['Bytes']>
-  owner_gte?: InputMaybe<Scalars['Bytes']>
-  owner_lte?: InputMaybe<Scalars['Bytes']>
-  owner_in?: InputMaybe<Array<Scalars['Bytes']>>
-  owner_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  owner_contains?: InputMaybe<Scalars['Bytes']>
-  owner_not_contains?: InputMaybe<Scalars['Bytes']>
-  cost?: InputMaybe<Scalars['BigInt']>
-  cost_not?: InputMaybe<Scalars['BigInt']>
-  cost_gt?: InputMaybe<Scalars['BigInt']>
-  cost_lt?: InputMaybe<Scalars['BigInt']>
-  cost_gte?: InputMaybe<Scalars['BigInt']>
-  cost_lte?: InputMaybe<Scalars['BigInt']>
-  cost_in?: InputMaybe<Array<Scalars['BigInt']>>
-  cost_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  expires?: InputMaybe<Scalars['BigInt']>
-  expires_not?: InputMaybe<Scalars['BigInt']>
-  expires_gt?: InputMaybe<Scalars['BigInt']>
-  expires_lt?: InputMaybe<Scalars['BigInt']>
-  expires_gte?: InputMaybe<Scalars['BigInt']>
-  expires_lte?: InputMaybe<Scalars['BigInt']>
-  expires_in?: InputMaybe<Array<Scalars['BigInt']>>
-  expires_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber?: InputMaybe<Scalars['BigInt']>
-  blockNumber_not?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  transactionHash?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_contains?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not_contains?: InputMaybe<Scalars['Bytes']>
-  /** Filter for the block changed event. */
-  _change_block?: InputMaybe<BlockChangedFilter>
-  and?: InputMaybe<Array<InputMaybe<NameRegistered_filter>>>
-  or?: InputMaybe<Array<InputMaybe<NameRegistered_filter>>>
-}
-
-export type NameRegistered_orderBy =
-  | 'id'
-  | 'name'
-  | 'label'
-  | 'owner'
-  | 'cost'
-  | 'expires'
-  | 'blockNumber'
-  | 'blockTimestamp'
-  | 'transactionHash'
-
-export type NameRenewed = {
-  id: Scalars['Bytes']
-  name: Scalars['String']
-  label: Scalars['Bytes']
-  cost: Scalars['BigInt']
-  expires: Scalars['BigInt']
-  blockNumber: Scalars['BigInt']
-  blockTimestamp: Scalars['BigInt']
-  transactionHash: Scalars['Bytes']
-}
-
-export type NameRenewed_filter = {
-  id?: InputMaybe<Scalars['Bytes']>
-  id_not?: InputMaybe<Scalars['Bytes']>
-  id_gt?: InputMaybe<Scalars['Bytes']>
-  id_lt?: InputMaybe<Scalars['Bytes']>
-  id_gte?: InputMaybe<Scalars['Bytes']>
-  id_lte?: InputMaybe<Scalars['Bytes']>
-  id_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_contains?: InputMaybe<Scalars['Bytes']>
-  id_not_contains?: InputMaybe<Scalars['Bytes']>
-  name?: InputMaybe<Scalars['String']>
-  name_not?: InputMaybe<Scalars['String']>
-  name_gt?: InputMaybe<Scalars['String']>
-  name_lt?: InputMaybe<Scalars['String']>
-  name_gte?: InputMaybe<Scalars['String']>
-  name_lte?: InputMaybe<Scalars['String']>
-  name_in?: InputMaybe<Array<Scalars['String']>>
-  name_not_in?: InputMaybe<Array<Scalars['String']>>
-  name_contains?: InputMaybe<Scalars['String']>
-  name_contains_nocase?: InputMaybe<Scalars['String']>
-  name_not_contains?: InputMaybe<Scalars['String']>
-  name_not_contains_nocase?: InputMaybe<Scalars['String']>
-  name_starts_with?: InputMaybe<Scalars['String']>
-  name_starts_with_nocase?: InputMaybe<Scalars['String']>
-  name_not_starts_with?: InputMaybe<Scalars['String']>
-  name_not_starts_with_nocase?: InputMaybe<Scalars['String']>
-  name_ends_with?: InputMaybe<Scalars['String']>
-  name_ends_with_nocase?: InputMaybe<Scalars['String']>
-  name_not_ends_with?: InputMaybe<Scalars['String']>
-  name_not_ends_with_nocase?: InputMaybe<Scalars['String']>
-  label?: InputMaybe<Scalars['Bytes']>
-  label_not?: InputMaybe<Scalars['Bytes']>
-  label_gt?: InputMaybe<Scalars['Bytes']>
-  label_lt?: InputMaybe<Scalars['Bytes']>
-  label_gte?: InputMaybe<Scalars['Bytes']>
-  label_lte?: InputMaybe<Scalars['Bytes']>
-  label_in?: InputMaybe<Array<Scalars['Bytes']>>
-  label_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  label_contains?: InputMaybe<Scalars['Bytes']>
-  label_not_contains?: InputMaybe<Scalars['Bytes']>
-  cost?: InputMaybe<Scalars['BigInt']>
-  cost_not?: InputMaybe<Scalars['BigInt']>
-  cost_gt?: InputMaybe<Scalars['BigInt']>
-  cost_lt?: InputMaybe<Scalars['BigInt']>
-  cost_gte?: InputMaybe<Scalars['BigInt']>
-  cost_lte?: InputMaybe<Scalars['BigInt']>
-  cost_in?: InputMaybe<Array<Scalars['BigInt']>>
-  cost_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  expires?: InputMaybe<Scalars['BigInt']>
-  expires_not?: InputMaybe<Scalars['BigInt']>
-  expires_gt?: InputMaybe<Scalars['BigInt']>
-  expires_lt?: InputMaybe<Scalars['BigInt']>
-  expires_gte?: InputMaybe<Scalars['BigInt']>
-  expires_lte?: InputMaybe<Scalars['BigInt']>
-  expires_in?: InputMaybe<Array<Scalars['BigInt']>>
-  expires_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber?: InputMaybe<Scalars['BigInt']>
-  blockNumber_not?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  transactionHash?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_contains?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not_contains?: InputMaybe<Scalars['Bytes']>
-  /** Filter for the block changed event. */
-  _change_block?: InputMaybe<BlockChangedFilter>
-  and?: InputMaybe<Array<InputMaybe<NameRenewed_filter>>>
-  or?: InputMaybe<Array<InputMaybe<NameRenewed_filter>>>
-}
-
-export type NameRenewed_orderBy =
-  | 'id'
-  | 'name'
-  | 'label'
-  | 'cost'
-  | 'expires'
-  | 'blockNumber'
-  | 'blockTimestamp'
-  | 'transactionHash'
-
-export type NewPriceOracle = {
-  id: Scalars['Bytes']
-  oracle: Scalars['Bytes']
-  blockNumber: Scalars['BigInt']
-  blockTimestamp: Scalars['BigInt']
-  transactionHash: Scalars['Bytes']
-}
-
-export type NewPriceOracle_filter = {
-  id?: InputMaybe<Scalars['Bytes']>
-  id_not?: InputMaybe<Scalars['Bytes']>
-  id_gt?: InputMaybe<Scalars['Bytes']>
-  id_lt?: InputMaybe<Scalars['Bytes']>
-  id_gte?: InputMaybe<Scalars['Bytes']>
-  id_lte?: InputMaybe<Scalars['Bytes']>
-  id_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_contains?: InputMaybe<Scalars['Bytes']>
-  id_not_contains?: InputMaybe<Scalars['Bytes']>
-  oracle?: InputMaybe<Scalars['Bytes']>
-  oracle_not?: InputMaybe<Scalars['Bytes']>
-  oracle_gt?: InputMaybe<Scalars['Bytes']>
-  oracle_lt?: InputMaybe<Scalars['Bytes']>
-  oracle_gte?: InputMaybe<Scalars['Bytes']>
-  oracle_lte?: InputMaybe<Scalars['Bytes']>
-  oracle_in?: InputMaybe<Array<Scalars['Bytes']>>
-  oracle_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  oracle_contains?: InputMaybe<Scalars['Bytes']>
-  oracle_not_contains?: InputMaybe<Scalars['Bytes']>
-  blockNumber?: InputMaybe<Scalars['BigInt']>
-  blockNumber_not?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  transactionHash?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_contains?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not_contains?: InputMaybe<Scalars['Bytes']>
-  /** Filter for the block changed event. */
-  _change_block?: InputMaybe<BlockChangedFilter>
-  and?: InputMaybe<Array<InputMaybe<NewPriceOracle_filter>>>
-  or?: InputMaybe<Array<InputMaybe<NewPriceOracle_filter>>>
-}
-
-export type NewPriceOracle_orderBy =
-  | 'id'
-  | 'oracle'
-  | 'blockNumber'
-  | 'blockTimestamp'
-  | 'transactionHash'
-
 /** Defines the order direction, either ascending or descending */
 export type OrderDirection = 'asc' | 'desc'
 
-export type OwnershipTransferred = {
-  id: Scalars['Bytes']
-  previousOwner: Scalars['Bytes']
-  newOwner: Scalars['Bytes']
-  blockNumber: Scalars['BigInt']
-  blockTimestamp: Scalars['BigInt']
-  transactionHash: Scalars['Bytes']
-}
-
-export type OwnershipTransferred_filter = {
-  id?: InputMaybe<Scalars['Bytes']>
-  id_not?: InputMaybe<Scalars['Bytes']>
-  id_gt?: InputMaybe<Scalars['Bytes']>
-  id_lt?: InputMaybe<Scalars['Bytes']>
-  id_gte?: InputMaybe<Scalars['Bytes']>
-  id_lte?: InputMaybe<Scalars['Bytes']>
-  id_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  id_contains?: InputMaybe<Scalars['Bytes']>
-  id_not_contains?: InputMaybe<Scalars['Bytes']>
-  previousOwner?: InputMaybe<Scalars['Bytes']>
-  previousOwner_not?: InputMaybe<Scalars['Bytes']>
-  previousOwner_gt?: InputMaybe<Scalars['Bytes']>
-  previousOwner_lt?: InputMaybe<Scalars['Bytes']>
-  previousOwner_gte?: InputMaybe<Scalars['Bytes']>
-  previousOwner_lte?: InputMaybe<Scalars['Bytes']>
-  previousOwner_in?: InputMaybe<Array<Scalars['Bytes']>>
-  previousOwner_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  previousOwner_contains?: InputMaybe<Scalars['Bytes']>
-  previousOwner_not_contains?: InputMaybe<Scalars['Bytes']>
-  newOwner?: InputMaybe<Scalars['Bytes']>
-  newOwner_not?: InputMaybe<Scalars['Bytes']>
-  newOwner_gt?: InputMaybe<Scalars['Bytes']>
-  newOwner_lt?: InputMaybe<Scalars['Bytes']>
-  newOwner_gte?: InputMaybe<Scalars['Bytes']>
-  newOwner_lte?: InputMaybe<Scalars['Bytes']>
-  newOwner_in?: InputMaybe<Array<Scalars['Bytes']>>
-  newOwner_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  newOwner_contains?: InputMaybe<Scalars['Bytes']>
-  newOwner_not_contains?: InputMaybe<Scalars['Bytes']>
-  blockNumber?: InputMaybe<Scalars['BigInt']>
-  blockNumber_not?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lt?: InputMaybe<Scalars['BigInt']>
-  blockNumber_gte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_lte?: InputMaybe<Scalars['BigInt']>
-  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>
-  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>
-  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>
-  transactionHash?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lt?: InputMaybe<Scalars['Bytes']>
-  transactionHash_gte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_lte?: InputMaybe<Scalars['Bytes']>
-  transactionHash_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_not_in?: InputMaybe<Array<Scalars['Bytes']>>
-  transactionHash_contains?: InputMaybe<Scalars['Bytes']>
-  transactionHash_not_contains?: InputMaybe<Scalars['Bytes']>
-  /** Filter for the block changed event. */
-  _change_block?: InputMaybe<BlockChangedFilter>
-  and?: InputMaybe<Array<InputMaybe<OwnershipTransferred_filter>>>
-  or?: InputMaybe<Array<InputMaybe<OwnershipTransferred_filter>>>
-}
-
-export type OwnershipTransferred_orderBy =
-  | 'id'
-  | 'previousOwner'
-  | 'newOwner'
-  | 'blockNumber'
-  | 'blockTimestamp'
-  | 'transactionHash'
-
 export type Query = {
-  nameRegistered?: Maybe<NameRegistered>
-  nameRegistereds: Array<NameRegistered>
-  nameRenewed?: Maybe<NameRenewed>
-  nameReneweds: Array<NameRenewed>
-  newPriceOracle?: Maybe<NewPriceOracle>
-  newPriceOracles: Array<NewPriceOracle>
-  ownershipTransferred?: Maybe<OwnershipTransferred>
-  ownershipTransferreds: Array<OwnershipTransferred>
+  token?: Maybe<Token>
+  tokens: Array<Token>
+  user?: Maybe<User>
+  users: Array<User>
   /** Access to subgraph metadata */
   _meta?: Maybe<_Meta_>
 }
 
-export type QuerynameRegisteredArgs = {
+export type QuerytokenArgs = {
   id: Scalars['ID']
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type QuerynameRegisteredsArgs = {
+export type QuerytokensArgs = {
   skip?: InputMaybe<Scalars['Int']>
   first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NameRegistered_orderBy>
+  orderBy?: InputMaybe<Token_orderBy>
   orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NameRegistered_filter>
+  where?: InputMaybe<Token_filter>
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type QuerynameRenewedArgs = {
+export type QueryuserArgs = {
   id: Scalars['ID']
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type QuerynameRenewedsArgs = {
+export type QueryusersArgs = {
   skip?: InputMaybe<Scalars['Int']>
   first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NameRenewed_orderBy>
+  orderBy?: InputMaybe<User_orderBy>
   orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NameRenewed_filter>
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type QuerynewPriceOracleArgs = {
-  id: Scalars['ID']
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type QuerynewPriceOraclesArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NewPriceOracle_orderBy>
-  orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NewPriceOracle_filter>
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type QueryownershipTransferredArgs = {
-  id: Scalars['ID']
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type QueryownershipTransferredsArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<OwnershipTransferred_orderBy>
-  orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<OwnershipTransferred_filter>
+  where?: InputMaybe<User_filter>
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
@@ -535,78 +119,42 @@ export type Query_metaArgs = {
 }
 
 export type Subscription = {
-  nameRegistered?: Maybe<NameRegistered>
-  nameRegistereds: Array<NameRegistered>
-  nameRenewed?: Maybe<NameRenewed>
-  nameReneweds: Array<NameRenewed>
-  newPriceOracle?: Maybe<NewPriceOracle>
-  newPriceOracles: Array<NewPriceOracle>
-  ownershipTransferred?: Maybe<OwnershipTransferred>
-  ownershipTransferreds: Array<OwnershipTransferred>
+  token?: Maybe<Token>
+  tokens: Array<Token>
+  user?: Maybe<User>
+  users: Array<User>
   /** Access to subgraph metadata */
   _meta?: Maybe<_Meta_>
 }
 
-export type SubscriptionnameRegisteredArgs = {
+export type SubscriptiontokenArgs = {
   id: Scalars['ID']
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type SubscriptionnameRegisteredsArgs = {
+export type SubscriptiontokensArgs = {
   skip?: InputMaybe<Scalars['Int']>
   first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NameRegistered_orderBy>
+  orderBy?: InputMaybe<Token_orderBy>
   orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NameRegistered_filter>
+  where?: InputMaybe<Token_filter>
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type SubscriptionnameRenewedArgs = {
+export type SubscriptionuserArgs = {
   id: Scalars['ID']
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
 
-export type SubscriptionnameRenewedsArgs = {
+export type SubscriptionusersArgs = {
   skip?: InputMaybe<Scalars['Int']>
   first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NameRenewed_orderBy>
+  orderBy?: InputMaybe<User_orderBy>
   orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NameRenewed_filter>
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type SubscriptionnewPriceOracleArgs = {
-  id: Scalars['ID']
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type SubscriptionnewPriceOraclesArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<NewPriceOracle_orderBy>
-  orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<NewPriceOracle_filter>
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type SubscriptionownershipTransferredArgs = {
-  id: Scalars['ID']
-  block?: InputMaybe<Block_height>
-  subgraphError?: _SubgraphErrorPolicy_
-}
-
-export type SubscriptionownershipTransferredsArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  first?: InputMaybe<Scalars['Int']>
-  orderBy?: InputMaybe<OwnershipTransferred_orderBy>
-  orderDirection?: InputMaybe<OrderDirection>
-  where?: InputMaybe<OwnershipTransferred_filter>
+  where?: InputMaybe<User_filter>
   block?: InputMaybe<Block_height>
   subgraphError?: _SubgraphErrorPolicy_
 }
@@ -614,6 +162,181 @@ export type SubscriptionownershipTransferredsArgs = {
 export type Subscription_metaArgs = {
   block?: InputMaybe<Block_height>
 }
+
+export type Token = {
+  id: Scalars['ID']
+  tokenId: Scalars['BigInt']
+  contentURI: Scalars['String']
+  metadataURI: Scalars['String']
+  createdAtTimestamp: Scalars['BigInt']
+  creator: User
+  owner: User
+}
+
+export type Token_filter = {
+  id?: InputMaybe<Scalars['ID']>
+  id_not?: InputMaybe<Scalars['ID']>
+  id_gt?: InputMaybe<Scalars['ID']>
+  id_lt?: InputMaybe<Scalars['ID']>
+  id_gte?: InputMaybe<Scalars['ID']>
+  id_lte?: InputMaybe<Scalars['ID']>
+  id_in?: InputMaybe<Array<Scalars['ID']>>
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>
+  tokenId?: InputMaybe<Scalars['BigInt']>
+  tokenId_not?: InputMaybe<Scalars['BigInt']>
+  tokenId_gt?: InputMaybe<Scalars['BigInt']>
+  tokenId_lt?: InputMaybe<Scalars['BigInt']>
+  tokenId_gte?: InputMaybe<Scalars['BigInt']>
+  tokenId_lte?: InputMaybe<Scalars['BigInt']>
+  tokenId_in?: InputMaybe<Array<Scalars['BigInt']>>
+  tokenId_not_in?: InputMaybe<Array<Scalars['BigInt']>>
+  contentURI?: InputMaybe<Scalars['String']>
+  contentURI_not?: InputMaybe<Scalars['String']>
+  contentURI_gt?: InputMaybe<Scalars['String']>
+  contentURI_lt?: InputMaybe<Scalars['String']>
+  contentURI_gte?: InputMaybe<Scalars['String']>
+  contentURI_lte?: InputMaybe<Scalars['String']>
+  contentURI_in?: InputMaybe<Array<Scalars['String']>>
+  contentURI_not_in?: InputMaybe<Array<Scalars['String']>>
+  contentURI_contains?: InputMaybe<Scalars['String']>
+  contentURI_contains_nocase?: InputMaybe<Scalars['String']>
+  contentURI_not_contains?: InputMaybe<Scalars['String']>
+  contentURI_not_contains_nocase?: InputMaybe<Scalars['String']>
+  contentURI_starts_with?: InputMaybe<Scalars['String']>
+  contentURI_starts_with_nocase?: InputMaybe<Scalars['String']>
+  contentURI_not_starts_with?: InputMaybe<Scalars['String']>
+  contentURI_not_starts_with_nocase?: InputMaybe<Scalars['String']>
+  contentURI_ends_with?: InputMaybe<Scalars['String']>
+  contentURI_ends_with_nocase?: InputMaybe<Scalars['String']>
+  contentURI_not_ends_with?: InputMaybe<Scalars['String']>
+  contentURI_not_ends_with_nocase?: InputMaybe<Scalars['String']>
+  metadataURI?: InputMaybe<Scalars['String']>
+  metadataURI_not?: InputMaybe<Scalars['String']>
+  metadataURI_gt?: InputMaybe<Scalars['String']>
+  metadataURI_lt?: InputMaybe<Scalars['String']>
+  metadataURI_gte?: InputMaybe<Scalars['String']>
+  metadataURI_lte?: InputMaybe<Scalars['String']>
+  metadataURI_in?: InputMaybe<Array<Scalars['String']>>
+  metadataURI_not_in?: InputMaybe<Array<Scalars['String']>>
+  metadataURI_contains?: InputMaybe<Scalars['String']>
+  metadataURI_contains_nocase?: InputMaybe<Scalars['String']>
+  metadataURI_not_contains?: InputMaybe<Scalars['String']>
+  metadataURI_not_contains_nocase?: InputMaybe<Scalars['String']>
+  metadataURI_starts_with?: InputMaybe<Scalars['String']>
+  metadataURI_starts_with_nocase?: InputMaybe<Scalars['String']>
+  metadataURI_not_starts_with?: InputMaybe<Scalars['String']>
+  metadataURI_not_starts_with_nocase?: InputMaybe<Scalars['String']>
+  metadataURI_ends_with?: InputMaybe<Scalars['String']>
+  metadataURI_ends_with_nocase?: InputMaybe<Scalars['String']>
+  metadataURI_not_ends_with?: InputMaybe<Scalars['String']>
+  metadataURI_not_ends_with_nocase?: InputMaybe<Scalars['String']>
+  createdAtTimestamp?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_not?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_gt?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_lt?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_gte?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_lte?: InputMaybe<Scalars['BigInt']>
+  createdAtTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>
+  createdAtTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>
+  creator?: InputMaybe<Scalars['String']>
+  creator_not?: InputMaybe<Scalars['String']>
+  creator_gt?: InputMaybe<Scalars['String']>
+  creator_lt?: InputMaybe<Scalars['String']>
+  creator_gte?: InputMaybe<Scalars['String']>
+  creator_lte?: InputMaybe<Scalars['String']>
+  creator_in?: InputMaybe<Array<Scalars['String']>>
+  creator_not_in?: InputMaybe<Array<Scalars['String']>>
+  creator_contains?: InputMaybe<Scalars['String']>
+  creator_contains_nocase?: InputMaybe<Scalars['String']>
+  creator_not_contains?: InputMaybe<Scalars['String']>
+  creator_not_contains_nocase?: InputMaybe<Scalars['String']>
+  creator_starts_with?: InputMaybe<Scalars['String']>
+  creator_starts_with_nocase?: InputMaybe<Scalars['String']>
+  creator_not_starts_with?: InputMaybe<Scalars['String']>
+  creator_not_starts_with_nocase?: InputMaybe<Scalars['String']>
+  creator_ends_with?: InputMaybe<Scalars['String']>
+  creator_ends_with_nocase?: InputMaybe<Scalars['String']>
+  creator_not_ends_with?: InputMaybe<Scalars['String']>
+  creator_not_ends_with_nocase?: InputMaybe<Scalars['String']>
+  creator_?: InputMaybe<User_filter>
+  owner?: InputMaybe<Scalars['String']>
+  owner_not?: InputMaybe<Scalars['String']>
+  owner_gt?: InputMaybe<Scalars['String']>
+  owner_lt?: InputMaybe<Scalars['String']>
+  owner_gte?: InputMaybe<Scalars['String']>
+  owner_lte?: InputMaybe<Scalars['String']>
+  owner_in?: InputMaybe<Array<Scalars['String']>>
+  owner_not_in?: InputMaybe<Array<Scalars['String']>>
+  owner_contains?: InputMaybe<Scalars['String']>
+  owner_contains_nocase?: InputMaybe<Scalars['String']>
+  owner_not_contains?: InputMaybe<Scalars['String']>
+  owner_not_contains_nocase?: InputMaybe<Scalars['String']>
+  owner_starts_with?: InputMaybe<Scalars['String']>
+  owner_starts_with_nocase?: InputMaybe<Scalars['String']>
+  owner_not_starts_with?: InputMaybe<Scalars['String']>
+  owner_not_starts_with_nocase?: InputMaybe<Scalars['String']>
+  owner_ends_with?: InputMaybe<Scalars['String']>
+  owner_ends_with_nocase?: InputMaybe<Scalars['String']>
+  owner_not_ends_with?: InputMaybe<Scalars['String']>
+  owner_not_ends_with_nocase?: InputMaybe<Scalars['String']>
+  owner_?: InputMaybe<User_filter>
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>
+  and?: InputMaybe<Array<InputMaybe<Token_filter>>>
+  or?: InputMaybe<Array<InputMaybe<Token_filter>>>
+}
+
+export type Token_orderBy =
+  | 'id'
+  | 'tokenId'
+  | 'contentURI'
+  | 'metadataURI'
+  | 'createdAtTimestamp'
+  | 'creator'
+  | 'creator__id'
+  | 'owner'
+  | 'owner__id'
+
+export type User = {
+  id: Scalars['ID']
+  tokens: Array<Token>
+  created: Array<Token>
+}
+
+export type UsertokensArgs = {
+  skip?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']>
+  orderBy?: InputMaybe<Token_orderBy>
+  orderDirection?: InputMaybe<OrderDirection>
+  where?: InputMaybe<Token_filter>
+}
+
+export type UsercreatedArgs = {
+  skip?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']>
+  orderBy?: InputMaybe<Token_orderBy>
+  orderDirection?: InputMaybe<OrderDirection>
+  where?: InputMaybe<Token_filter>
+}
+
+export type User_filter = {
+  id?: InputMaybe<Scalars['ID']>
+  id_not?: InputMaybe<Scalars['ID']>
+  id_gt?: InputMaybe<Scalars['ID']>
+  id_lt?: InputMaybe<Scalars['ID']>
+  id_gte?: InputMaybe<Scalars['ID']>
+  id_lte?: InputMaybe<Scalars['ID']>
+  id_in?: InputMaybe<Array<Scalars['ID']>>
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>
+  tokens_?: InputMaybe<Token_filter>
+  created_?: InputMaybe<Token_filter>
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>
+  and?: InputMaybe<Array<InputMaybe<User_filter>>>
+  or?: InputMaybe<Array<InputMaybe<User_filter>>>
+}
+
+export type User_orderBy = 'id' | 'tokens' | 'created'
 
 export type _Block_ = {
   /** The hash of the block */
@@ -779,22 +502,16 @@ export type ResolversTypes = ResolversObject<{
   Float: ResolverTypeWrapper<Scalars['Float']>
   ID: ResolverTypeWrapper<Scalars['ID']>
   Int: ResolverTypeWrapper<Scalars['Int']>
-  NameRegistered: ResolverTypeWrapper<NameRegistered>
-  NameRegistered_filter: NameRegistered_filter
-  NameRegistered_orderBy: NameRegistered_orderBy
-  NameRenewed: ResolverTypeWrapper<NameRenewed>
-  NameRenewed_filter: NameRenewed_filter
-  NameRenewed_orderBy: NameRenewed_orderBy
-  NewPriceOracle: ResolverTypeWrapper<NewPriceOracle>
-  NewPriceOracle_filter: NewPriceOracle_filter
-  NewPriceOracle_orderBy: NewPriceOracle_orderBy
   OrderDirection: OrderDirection
-  OwnershipTransferred: ResolverTypeWrapper<OwnershipTransferred>
-  OwnershipTransferred_filter: OwnershipTransferred_filter
-  OwnershipTransferred_orderBy: OwnershipTransferred_orderBy
   Query: ResolverTypeWrapper<{}>
   String: ResolverTypeWrapper<Scalars['String']>
   Subscription: ResolverTypeWrapper<{}>
+  Token: ResolverTypeWrapper<Token>
+  Token_filter: Token_filter
+  Token_orderBy: Token_orderBy
+  User: ResolverTypeWrapper<User>
+  User_filter: User_filter
+  User_orderBy: User_orderBy
   _Block_: ResolverTypeWrapper<_Block_>
   _Meta_: ResolverTypeWrapper<_Meta_>
   _SubgraphErrorPolicy_: _SubgraphErrorPolicy_
@@ -811,17 +528,13 @@ export type ResolversParentTypes = ResolversObject<{
   Float: Scalars['Float']
   ID: Scalars['ID']
   Int: Scalars['Int']
-  NameRegistered: NameRegistered
-  NameRegistered_filter: NameRegistered_filter
-  NameRenewed: NameRenewed
-  NameRenewed_filter: NameRenewed_filter
-  NewPriceOracle: NewPriceOracle
-  NewPriceOracle_filter: NewPriceOracle_filter
-  OwnershipTransferred: OwnershipTransferred
-  OwnershipTransferred_filter: OwnershipTransferred_filter
   Query: {}
   String: Scalars['String']
   Subscription: {}
+  Token: Token
+  Token_filter: Token_filter
+  User: User
+  User_filter: User_filter
   _Block_: _Block_
   _Meta_: _Meta_
 }>
@@ -872,116 +585,33 @@ export interface BytesScalarConfig
   name: 'Bytes'
 }
 
-export type NameRegisteredResolvers<
-  ContextType = MeshContext,
-  ParentType extends ResolversParentTypes['NameRegistered'] = ResolversParentTypes['NameRegistered']
-> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
-  label?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  owner?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  cost?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  expires?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  transactionHash?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
-}>
-
-export type NameRenewedResolvers<
-  ContextType = MeshContext,
-  ParentType extends ResolversParentTypes['NameRenewed'] = ResolversParentTypes['NameRenewed']
-> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
-  label?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  cost?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  expires?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  transactionHash?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
-}>
-
-export type NewPriceOracleResolvers<
-  ContextType = MeshContext,
-  ParentType extends ResolversParentTypes['NewPriceOracle'] = ResolversParentTypes['NewPriceOracle']
-> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  oracle?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  transactionHash?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
-}>
-
-export type OwnershipTransferredResolvers<
-  ContextType = MeshContext,
-  ParentType extends ResolversParentTypes['OwnershipTransferred'] = ResolversParentTypes['OwnershipTransferred']
-> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  previousOwner?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  newOwner?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
-  transactionHash?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
-}>
-
 export type QueryResolvers<
   ContextType = MeshContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = ResolversObject<{
-  nameRegistered?: Resolver<
-    Maybe<ResolversTypes['NameRegistered']>,
+  token?: Resolver<
+    Maybe<ResolversTypes['Token']>,
     ParentType,
     ContextType,
-    RequireFields<QuerynameRegisteredArgs, 'id' | 'subgraphError'>
+    RequireFields<QuerytokenArgs, 'id' | 'subgraphError'>
   >
-  nameRegistereds?: Resolver<
-    Array<ResolversTypes['NameRegistered']>,
+  tokens?: Resolver<
+    Array<ResolversTypes['Token']>,
     ParentType,
     ContextType,
-    RequireFields<QuerynameRegisteredsArgs, 'skip' | 'first' | 'subgraphError'>
+    RequireFields<QuerytokensArgs, 'skip' | 'first' | 'subgraphError'>
   >
-  nameRenewed?: Resolver<
-    Maybe<ResolversTypes['NameRenewed']>,
+  user?: Resolver<
+    Maybe<ResolversTypes['User']>,
     ParentType,
     ContextType,
-    RequireFields<QuerynameRenewedArgs, 'id' | 'subgraphError'>
+    RequireFields<QueryuserArgs, 'id' | 'subgraphError'>
   >
-  nameReneweds?: Resolver<
-    Array<ResolversTypes['NameRenewed']>,
+  users?: Resolver<
+    Array<ResolversTypes['User']>,
     ParentType,
     ContextType,
-    RequireFields<QuerynameRenewedsArgs, 'skip' | 'first' | 'subgraphError'>
-  >
-  newPriceOracle?: Resolver<
-    Maybe<ResolversTypes['NewPriceOracle']>,
-    ParentType,
-    ContextType,
-    RequireFields<QuerynewPriceOracleArgs, 'id' | 'subgraphError'>
-  >
-  newPriceOracles?: Resolver<
-    Array<ResolversTypes['NewPriceOracle']>,
-    ParentType,
-    ContextType,
-    RequireFields<QuerynewPriceOraclesArgs, 'skip' | 'first' | 'subgraphError'>
-  >
-  ownershipTransferred?: Resolver<
-    Maybe<ResolversTypes['OwnershipTransferred']>,
-    ParentType,
-    ContextType,
-    RequireFields<QueryownershipTransferredArgs, 'id' | 'subgraphError'>
-  >
-  ownershipTransferreds?: Resolver<
-    Array<ResolversTypes['OwnershipTransferred']>,
-    ParentType,
-    ContextType,
-    RequireFields<
-      QueryownershipTransferredsArgs,
-      'skip' | 'first' | 'subgraphError'
-    >
+    RequireFields<QueryusersArgs, 'skip' | 'first' | 'subgraphError'>
   >
   _meta?: Resolver<
     Maybe<ResolversTypes['_Meta_']>,
@@ -995,73 +625,33 @@ export type SubscriptionResolvers<
   ContextType = MeshContext,
   ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']
 > = ResolversObject<{
-  nameRegistered?: SubscriptionResolver<
-    Maybe<ResolversTypes['NameRegistered']>,
-    'nameRegistered',
+  token?: SubscriptionResolver<
+    Maybe<ResolversTypes['Token']>,
+    'token',
     ParentType,
     ContextType,
-    RequireFields<SubscriptionnameRegisteredArgs, 'id' | 'subgraphError'>
+    RequireFields<SubscriptiontokenArgs, 'id' | 'subgraphError'>
   >
-  nameRegistereds?: SubscriptionResolver<
-    Array<ResolversTypes['NameRegistered']>,
-    'nameRegistereds',
+  tokens?: SubscriptionResolver<
+    Array<ResolversTypes['Token']>,
+    'tokens',
     ParentType,
     ContextType,
-    RequireFields<
-      SubscriptionnameRegisteredsArgs,
-      'skip' | 'first' | 'subgraphError'
-    >
+    RequireFields<SubscriptiontokensArgs, 'skip' | 'first' | 'subgraphError'>
   >
-  nameRenewed?: SubscriptionResolver<
-    Maybe<ResolversTypes['NameRenewed']>,
-    'nameRenewed',
+  user?: SubscriptionResolver<
+    Maybe<ResolversTypes['User']>,
+    'user',
     ParentType,
     ContextType,
-    RequireFields<SubscriptionnameRenewedArgs, 'id' | 'subgraphError'>
+    RequireFields<SubscriptionuserArgs, 'id' | 'subgraphError'>
   >
-  nameReneweds?: SubscriptionResolver<
-    Array<ResolversTypes['NameRenewed']>,
-    'nameReneweds',
+  users?: SubscriptionResolver<
+    Array<ResolversTypes['User']>,
+    'users',
     ParentType,
     ContextType,
-    RequireFields<
-      SubscriptionnameRenewedsArgs,
-      'skip' | 'first' | 'subgraphError'
-    >
-  >
-  newPriceOracle?: SubscriptionResolver<
-    Maybe<ResolversTypes['NewPriceOracle']>,
-    'newPriceOracle',
-    ParentType,
-    ContextType,
-    RequireFields<SubscriptionnewPriceOracleArgs, 'id' | 'subgraphError'>
-  >
-  newPriceOracles?: SubscriptionResolver<
-    Array<ResolversTypes['NewPriceOracle']>,
-    'newPriceOracles',
-    ParentType,
-    ContextType,
-    RequireFields<
-      SubscriptionnewPriceOraclesArgs,
-      'skip' | 'first' | 'subgraphError'
-    >
-  >
-  ownershipTransferred?: SubscriptionResolver<
-    Maybe<ResolversTypes['OwnershipTransferred']>,
-    'ownershipTransferred',
-    ParentType,
-    ContextType,
-    RequireFields<SubscriptionownershipTransferredArgs, 'id' | 'subgraphError'>
-  >
-  ownershipTransferreds?: SubscriptionResolver<
-    Array<ResolversTypes['OwnershipTransferred']>,
-    'ownershipTransferreds',
-    ParentType,
-    ContextType,
-    RequireFields<
-      SubscriptionownershipTransferredsArgs,
-      'skip' | 'first' | 'subgraphError'
-    >
+    RequireFields<SubscriptionusersArgs, 'skip' | 'first' | 'subgraphError'>
   >
   _meta?: SubscriptionResolver<
     Maybe<ResolversTypes['_Meta_']>,
@@ -1070,6 +660,44 @@ export type SubscriptionResolvers<
     ContextType,
     Partial<Subscription_metaArgs>
   >
+}>
+
+export type TokenResolvers<
+  ContextType = MeshContext,
+  ParentType extends ResolversParentTypes['Token'] = ResolversParentTypes['Token']
+> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>
+  tokenId?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>
+  contentURI?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  metadataURI?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  createdAtTimestamp?: Resolver<
+    ResolversTypes['BigInt'],
+    ParentType,
+    ContextType
+  >
+  creator?: Resolver<ResolversTypes['User'], ParentType, ContextType>
+  owner?: Resolver<ResolversTypes['User'], ParentType, ContextType>
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+}>
+
+export type UserResolvers<
+  ContextType = MeshContext,
+  ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
+> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>
+  tokens?: Resolver<
+    Array<ResolversTypes['Token']>,
+    ParentType,
+    ContextType,
+    RequireFields<UsertokensArgs, 'skip' | 'first'>
+  >
+  created?: Resolver<
+    Array<ResolversTypes['Token']>,
+    ParentType,
+    ContextType,
+    RequireFields<UsercreatedArgs, 'skip' | 'first'>
+  >
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }>
 
 export type _Block_Resolvers<
@@ -1100,12 +728,10 @@ export type Resolvers<ContextType = MeshContext> = ResolversObject<{
   BigDecimal?: GraphQLScalarType
   BigInt?: GraphQLScalarType
   Bytes?: GraphQLScalarType
-  NameRegistered?: NameRegisteredResolvers<ContextType>
-  NameRenewed?: NameRenewedResolvers<ContextType>
-  NewPriceOracle?: NewPriceOracleResolvers<ContextType>
-  OwnershipTransferred?: OwnershipTransferredResolvers<ContextType>
   Query?: QueryResolvers<ContextType>
   Subscription?: SubscriptionResolvers<ContextType>
+  Token?: TokenResolvers<ContextType>
+  User?: UserResolvers<ContextType>
   _Block_?: _Block_Resolvers<ContextType>
   _Meta_?: _Meta_Resolvers<ContextType>
 }>
@@ -1116,7 +742,7 @@ export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
   derivedFrom?: derivedFromDirectiveResolver<any, any, ContextType>
 }>
 
-export type MeshContext = EthRegistrarControllerTypes.Context & BaseMeshContext
+export type MeshContext = TokenSubgraphTypes.Context & BaseMeshContext
 
 import { fileURLToPath } from '@graphql-mesh/utils'
 const baseDir = pathModule.join(
@@ -1134,8 +760,8 @@ const importFn: ImportFn = <T>(moduleId: string) => {
     .join('/')
     .replace(baseDir + '/', '')
   switch (relativeModuleId) {
-    case '.graphclient/sources/ETHRegistrarController/introspectionSchema':
-      return import('./sources/ETHRegistrarController/introspectionSchema') as T
+    case '.graphclient/sources/TokenSubgraph/introspectionSchema':
+      return import('./sources/TokenSubgraph/introspectionSchema') as T
 
     default:
       return Promise.reject(
@@ -1173,25 +799,25 @@ export async function getMeshOptions(): Promise<GetMeshOptions> {
   const sources: MeshResolvedSource[] = []
   const transforms: MeshTransform[] = []
   const additionalEnvelopPlugins: MeshPlugin<any>[] = []
-  const ethRegistrarControllerTransforms = []
+  const tokenSubgraphTransforms = []
   const additionalTypeDefs = [] as any[]
-  const ethRegistrarControllerHandler = new GraphqlHandler({
-    name: 'ETHRegistrarController',
+  const tokenSubgraphHandler = new GraphqlHandler({
+    name: 'TokenSubgraph',
     config: {
       endpoint:
-        'https://api.studio.thegraph.com/query/43355/ens-explorer/0.0.1',
+        'https://api.studio.thegraph.com/query/43355/explorer-subgraph/v0.0.1',
     },
     baseDir,
     cache,
     pubsub,
-    store: sourcesStore.child('ETHRegistrarController'),
-    logger: logger.child('ETHRegistrarController'),
+    store: sourcesStore.child('TokenSubgraph'),
+    logger: logger.child('TokenSubgraph'),
     importFn,
   })
   sources[0] = {
-    name: 'ETHRegistrarController',
-    handler: ethRegistrarControllerHandler,
-    transforms: ethRegistrarControllerTransforms,
+    name: 'TokenSubgraph',
+    handler: tokenSubgraphHandler,
+    transforms: tokenSubgraphTransforms,
   }
   const additionalResolvers = [] as any[]
   const merger = new (BareMerger as any)({
@@ -1214,11 +840,11 @@ export async function getMeshOptions(): Promise<GetMeshOptions> {
     get documents() {
       return [
         {
-          document: NameRegisteredQueryDocument,
+          document: TokensByUsersQueryDocument,
           get rawSDL() {
-            return printWithCache(NameRegisteredQueryDocument)
+            return printWithCache(TokensByUsersQueryDocument)
           },
-          location: 'NameRegisteredQueryDocument.graphql',
+          location: 'TokensByUsersQueryDocument.graphql',
         },
       ]
     },
@@ -1268,31 +894,36 @@ export function getBuiltGraphSDK<TGlobalContext = any, TOperationContext = any>(
     sdkRequester$.then((sdkRequester) => sdkRequester(...args))
   )
 }
-export type NameRegisteredQueryQueryVariables = Exact<{ [key: string]: never }>
+export type TokensByUsersQueryQueryVariables = Exact<{ [key: string]: never }>
 
-export type NameRegisteredQueryQuery = {
-  nameRegistereds: Array<
-    Pick<
-      NameRegistered,
-      'id' | 'name' | 'label' | 'owner' | 'blockNumber' | 'cost'
-    >
+export type TokensByUsersQueryQuery = {
+  users: Array<
+    Pick<User, 'id'> & {
+      tokens: Array<
+        Pick<
+          Token,
+          'tokenId' | 'contentURI' | 'metadataURI' | 'createdAtTimestamp'
+        >
+      >
+    }
   >
 }
 
-export const NameRegisteredQueryDocument = gql`
-  query NameRegisteredQuery {
-    nameRegistereds(first: 20, orderBy: blockTimestamp, orderDirection: desc) {
+export const TokensByUsersQueryDocument = gql`
+  query TokensByUsersQuery {
+    users(first: 10) {
       id
-      name
-      label
-      owner
-      blockNumber
-      cost
+      tokens {
+        tokenId
+        contentURI
+        metadataURI
+        createdAtTimestamp
+      }
     }
   }
 ` as unknown as DocumentNode<
-  NameRegisteredQueryQuery,
-  NameRegisteredQueryQueryVariables
+  TokensByUsersQueryQuery,
+  TokensByUsersQueryQueryVariables
 >
 
 export type Requester<C = {}, E = unknown> = <R, V>(
@@ -1302,18 +933,18 @@ export type Requester<C = {}, E = unknown> = <R, V>(
 ) => Promise<R> | AsyncIterable<R>
 export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
-    NameRegisteredQuery(
-      variables?: NameRegisteredQueryQueryVariables,
+    TokensByUsersQuery(
+      variables?: TokensByUsersQueryQueryVariables,
       options?: C
-    ): Promise<NameRegisteredQueryQuery> {
+    ): Promise<TokensByUsersQueryQuery> {
       return requester<
-        NameRegisteredQueryQuery,
-        NameRegisteredQueryQueryVariables
+        TokensByUsersQueryQuery,
+        TokensByUsersQueryQueryVariables
       >(
-        NameRegisteredQueryDocument,
+        TokensByUsersQueryDocument,
         variables,
         options
-      ) as Promise<NameRegisteredQueryQuery>
+      ) as Promise<TokensByUsersQueryQuery>
     },
   }
 }

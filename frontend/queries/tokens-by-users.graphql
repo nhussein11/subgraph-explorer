@@ -1,0 +1,11 @@
+query TokensByUsersQuery {
+  users(first: 10) {
+    id
+    tokens {
+      tokenId
+      contentURI
+      metadataURI
+      createdAtTimestamp
+    }
+  }
+}

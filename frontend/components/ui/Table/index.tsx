@@ -14,8 +14,8 @@ export type TableProps<T, K extends keyof T> = {
 }
 
 const Table = <T, K extends keyof T>({ data, columns }: TableProps<T, K>) => (
-  <div className="container">
-    <table className="table-auto border-separate mx-8 mb-6 pb-2">
+  <div className="container mx-8 flex justify-center align-center">
+    <table className="table-auto border-collpase mx-8 mb-6 pb-2">
       <TableHeader columns={columns} />
       <TableRows data={data} columns={columns} />
     </table>

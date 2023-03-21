@@ -10,7 +10,7 @@ const isServer = typeof window === 'undefined'
 const ssrCache = ssrExchange({ isClient: !isServer })
 
 const client = createClient({
-  url: 'https://api.studio.thegraph.com/query/43355/ens-explorer/0.0.1',
+  url: 'https://api.studio.thegraph.com/query/43355/explorer-subgraph/v0.0.1',
   exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
 })
 

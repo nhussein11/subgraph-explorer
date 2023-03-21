@@ -1,0 +1,8 @@
+{
+  tokens() {
+    id
+    tokenId
+    contentURI
+    metadataURI
+  }
+}

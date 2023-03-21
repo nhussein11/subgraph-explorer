@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Container from '@components/Container'
 
 import { client, ssrCache } from '@utils/urqlClient'
-import { NameRegisteredQueryDocument } from '@/.graphclient'
-import LastTransactions from '@components/LastTransactions'
+import { TokensByUsersQueryDocument } from '@/.graphclient'
+import TokensByUsers from '@components/TokensByUsers'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container title="ENS Explorer">
-        <LastTransactions />
+        <TokensByUsers />
       </Container>
     </>
   )
@@ -23,7 +23,7 @@ export default function Home() {
 
 export async function getServerSideProps() {
   console.log('executing server side props')
-  await client.query(NameRegisteredQueryDocument, {}).toPromise()
+  await client.query(TokensByUsersQueryDocument, {}).toPromise()
   console.log('ssrCache', ssrCache)
   return {
     props: { urqlState: ssrCache.extractData() },
