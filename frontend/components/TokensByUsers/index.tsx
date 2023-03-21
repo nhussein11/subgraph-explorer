@@ -16,8 +16,8 @@ export default function TokensByUsers() {
 
   const { data, error, fetching } = result
 
-  if (fetching) return <div>loading</div>
-  if (error) return <div>error</div>
+  if (fetching) return <div>Loading...</div>
+  if (error) return <div>Error...</div>
 
   const columns: ColumnDefinitionType<TokenTable, keyof TokenTable>[] = [
     {
