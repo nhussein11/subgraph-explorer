@@ -31,7 +31,7 @@ export default function TokensByUsers() {
     },
     {
       key: 'createdAtTimestamp',
-      header: 'Created At: ',
+      header: 'Created At.',
       width: 300,
     },
     {
