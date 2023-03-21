@@ -34,4 +34,5 @@ export interface TokenTable {
   tokenId: string[]
   contentURI: string[]
   metadataURI: string[]
+  createdAtTimestamp: string[]
 }

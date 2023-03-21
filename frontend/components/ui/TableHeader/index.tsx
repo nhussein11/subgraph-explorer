@@ -9,7 +9,6 @@ const TableHeader = <T, K extends keyof T>({
 }: TableHeaderProps<T, K>) => {
   const headers = columns.map((column, index) => {
     const style = {
-      // In my case, I decided to use 100 as a default width
       width: column.width ?? 100,
     }
 
@@ -17,7 +16,7 @@ const TableHeader = <T, K extends keyof T>({
       <th
         key={`headCell-${index}`}
         style={style}
-        className="text-xl underline underline-offset-4"
+        className="border-double border-b-2  border-sky-500 text-xl underline underline-offset-4 pb-3"
       >
         {column.header}
       </th>

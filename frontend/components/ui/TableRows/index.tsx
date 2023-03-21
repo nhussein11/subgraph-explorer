@@ -14,10 +14,9 @@ const TableRows = <T, K extends keyof T>({
     return (
       <tr
         key={`row-${index}`}
-        className="border-b-2 border-dark-700 hover:bg-gray-600"
+        className="border-double border-b-2 border-sky-500 hover:bg-gray-600"
       >
         {columns.map((column, index2) => {
-          // console.log('row[column.key]', row[column.key] as ReactNode)
           if (
             Array.isArray(row[column.key]) &&
             (row[column.key] as Array<keyof T>).length > 0
@@ -29,7 +28,7 @@ const TableRows = <T, K extends keyof T>({
                     return (
                       <div
                         key={`item-${index}`}
-                        className="text-center text-md px-4 py-2"
+                        className="text-center text-md px-4 py-2 truncate"
                       >
                         {item as ReactNode}
                       </div>
@@ -41,7 +40,7 @@ const TableRows = <T, K extends keyof T>({
           }
           return (
             <td key={`cell-${index2}`} className="text-center text-md pt-2">
-              <div className="text-center text-md pt-2">
+              <div className="text-center text-md pt-2 truncate">
                 {typeof row[column.key] === 'string'
                   ? (row[column.key] as ReactNode)
                   : ' - '}
