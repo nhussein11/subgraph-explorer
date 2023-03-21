@@ -25,5 +25,13 @@ export interface Token {
 }
 
 // i need a type that involves id from TokensByUsers and tokenId, contentURI and metadataURI from Token
-export type TokenTable = Pick<TokensByUsers, 'id'> &
-  Pick<Token, 'tokenId' | 'contentURI' | 'metadataURI'>
+// TODO: create a type that involves id from TokensByUsers and tokenId, contentURI and metadataURI from Token
+// export type TokenTable = Pick<TokensByUsers, 'id'> &
+//   Pick<Token, 'tokenId' | 'contentURI' | 'metadataURI'>
+//
+export interface TokenTable {
+  id: string
+  tokenId: string[]
+  contentURI: string[]
+  metadataURI: string[]
+}

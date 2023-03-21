@@ -3,7 +3,7 @@ import { useQuery } from 'urql'
 import { TokensByUsersQueryDocument } from '@/.graphclient'
 
 import Table, { ColumnDefinitionType } from '@components/ui/Table'
-import { TokensByUsers as TokensByUsersType } from '@/global/types'
+import { TokensByUsers as TokensByUsersType, TokenTable } from '@/global/types'
 
 export default function TokensByUsers() {
   const [result] = useQuery({
@@ -15,33 +15,33 @@ export default function TokensByUsers() {
   if (fetching) return <div>loading</div>
   if (error) return <div>error</div>
 
-  const columns: ColumnDefinitionType<
-    TokensByUsersType,
-    keyof TokensByUsersType
-  >[] = [
+  const columns: ColumnDefinitionType<TokenTable, keyof TokenTable>[] = [
     {
       key: 'id',
       header: 'User',
     },
-    // {
-    //   key: 'tokens',
-    //   header: 'Token Id',
-    // },
-    // {
-    //   key: 'tokens',
-    //   header: 'Content URI',
-    // },
+    {
+      key: 'tokenId',
+      header: 'Token Id/s',
+    },
+    {
+      key: 'contentURI',
+      header: 'Content URI/s',
+    },
   ]
-  console.log('data users', data?.users)
-  const dataTable = data?.users as TokensByUsersType[]
-  // const dataTable = data?.users as TokensByUsersType[]
-  // TODO:  use something like this instead:
-  // const dataTable = data?.users
+
+  const dataTable = data?.users.map((user: TokensByUsersType) => {
+    return {
+      id: user.id,
+      tokenId: user.tokens.map((token) => token.tokenId).slice(0, 10),
+      contentURI: user.tokens.map((token) => token.contentURI).slice(0, 10),
+    }
+  }) as Array<TokenTable>
 
   return (
     <div className="container mx-8">
       <h2 className="text-2xl font-bold italic mb-5">Tokens by Users</h2>
-      <Table data={dataTable} columns={columns} />
+      <Table data={dataTable || ([] as TokenTable[])} columns={columns} />
     </div>
   )
 }
