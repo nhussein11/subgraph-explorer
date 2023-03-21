@@ -24,10 +24,10 @@ export default function TokensByUsers() {
       key: 'tokenId',
       header: 'Token Id/s',
     },
-    {
-      key: 'contentURI',
-      header: 'Content URI/s',
-    },
+    // {
+    //   key: 'contentURI',
+    //   header: 'Content URI/s',
+    // },
   ]
 
   const dataTable = data?.users.map((user: TokensByUsersType) => {

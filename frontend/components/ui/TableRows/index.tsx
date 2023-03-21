@@ -14,37 +14,38 @@ const TableRows = <T, K extends keyof T>({
     return (
       <tr
         key={`row-${index}`}
-        className="border-b-2 border-slate-700 hover:bg-gray-600"
+        className="border-b-2 border-dark-700 hover:bg-gray-600"
       >
         {columns.map((column, index2) => {
+          // console.log('row[column.key]', row[column.key] as ReactNode)
+          if (
+            Array.isArray(row[column.key]) &&
+            (row[column.key] as Array<keyof T>).length > 0
+          ) {
+            if ((row[column.key] as Array<keyof T>).length > 0) {
+              return (
+                <td key={`cell-${index2}`} className="text-center text-md pt-2">
+                  {(row[column.key] as Array<keyof T>).map((item, index) => {
+                    return (
+                      <div
+                        key={`item-${index}`}
+                        className="text-center text-md px-4 py-2"
+                      >
+                        {item as ReactNode}
+                      </div>
+                    )
+                  })}
+                </td>
+              )
+            }
+          }
           return (
             <td key={`cell-${index2}`} className="text-center text-md pt-2">
-              {Array.isArray(row[column.key]) &&
-              (row[column.key] as Array<keyof K>).length > 10 ? (
-                <div className="flex flex-col">
-                  <div className="flex flex-row">
-                    {(row[column.key] as Array<keyof K>)
-                      .slice(0, 10)
-                      .map((item, index) => {
-                        console.log('item', item)
-                        return (
-                          <div
-                            key={`item-${index}`}
-                            className="text-center text-md pt-2"
-                          >
-                            {item as ReactNode} <br />
-                          </div>
-                        )
-                      })}
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col">
-                  <div className="flex flex-row">
-                    {row[column.key] as ReactNode} ,,,, <br />
-                  </div>
-                </div>
-              )}
+              <div className="text-center text-md pt-2">
+                {typeof row[column.key] === 'string'
+                  ? (row[column.key] as ReactNode)
+                  : ' - '}
+              </div>
             </td>
           )
         })}
