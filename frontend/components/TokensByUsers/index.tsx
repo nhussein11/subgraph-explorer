@@ -28,16 +28,17 @@ export default function TokensByUsers() {
     {
       key: 'tokenId',
       header: 'Token Id/s',
+      width: 50,
     },
     {
       key: 'createdAtTimestamp',
       header: 'Created At.',
-      width: 300,
+      width: 200,
     },
     {
       key: 'metadataURI',
       header: 'Metadata Description',
-      width: 300,
+      width: 200,
     },
   ]
 
@@ -53,10 +54,8 @@ export default function TokensByUsers() {
     }
   }) as TokenTable[]
 
-  // TODO: add const tableRowsChildren -> to determine from this component HOW to render the table rows
-
   return (
-    <div className="container mx-8 ">
+    <div className="container mx-6">
       <h2 className="text-2xl font-bold italic mb-5">Tokens by Users</h2>
       <Table data={dataTable || ([] as TokenTable[])} columns={columns} />
     </div>

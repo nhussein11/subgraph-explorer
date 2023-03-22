@@ -1,5 +1,4 @@
 import React from 'react'
-import style from './styles.module.css'
 import Link from 'next/link'
 import SwitchThemeButton from '@components/SwitchThemeButton'
 
@@ -10,7 +9,7 @@ type ContainerProps = {
 
 export default function Container({ title, children }: ContainerProps) {
   return (
-    <>
+    <div className="md: font-light lg:font-extrabold">
       <nav
         className={
           'grid grid-cols-6 gap-4 mb-6 pb-5 border-b-2 border-gray-300'
@@ -24,9 +23,9 @@ export default function Container({ title, children }: ContainerProps) {
         </Link>
         <SwitchThemeButton />
       </nav>
-      <main className={style.mainContainer}>
+      <main>
         <section>{children}</section>
       </main>
-    </>
+    </div>
   )
 }
