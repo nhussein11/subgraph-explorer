@@ -22,9 +22,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps() {
-  console.log('executing server side props')
   await client.query(TokensByUsersQueryDocument, {}).toPromise()
-  console.log('ssrCache', ssrCache)
   return {
     props: { urqlState: ssrCache.extractData() },
   }
