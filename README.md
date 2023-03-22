@@ -12,7 +12,7 @@ To get started, clone the repository and install the dependencies:
 git clone https://github.com/nhussein11/subgraph-explorer.git
 ```
 
-Fist, you need to install the dependencies for the subgraph explorer.
+First, you need to install the dependencies for the subgraph explorer.
 
 ```bash
 cd subgraph-explorer
@@ -34,7 +34,7 @@ yarn install
 
 ## Running the project :running:
 
-To run the project, you need to only run the frontend, because I have deployed the subgraph explorer to the Graph.
+To run the project, you need to only run the frontend, because I've deployed the subgraph explorer to the Graph.
 
 ```bash
 cd frontend
