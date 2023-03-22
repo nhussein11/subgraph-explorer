@@ -12,12 +12,10 @@ const TableHeader = <T, K extends keyof T>({
       width: column.width ?? 100,
     }
 
+    const headerClass = `border-double border-b-2 border-sky-500 text-xl underline underline-offset-4 pb-3`
+
     return (
-      <th
-        key={`headCell-${index}`}
-        style={style}
-        className="border-double border-b-2  border-sky-500 text-xl underline underline-offset-4 pb-3"
-      >
+      <th key={`headCell-${index}`} style={style} className={headerClass}>
         {column.header}
       </th>
     )
