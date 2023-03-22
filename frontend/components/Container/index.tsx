@@ -13,7 +13,7 @@ export default function Container({ title, children }: ContainerProps) {
     <>
       <nav
         className={
-          'grid grid-cols-6 gap-4 mb-6 pb-2 border-b-2 border-gray-300'
+          'grid grid-cols-6 gap-4 mb-6 pb-5 border-b-2 border-gray-300'
         }
       >
         <Link
