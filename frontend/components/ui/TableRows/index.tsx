@@ -1,6 +1,5 @@
-// import { useSettingsContext } from '@/context'
-import { useSettingsContext } from '@/context'
 import React, { ReactNode } from 'react'
+import { useSettingsContext } from '@/context'
 import { ColumnDefinitionType } from '../Table'
 
 type TableRowsProps<T, K extends keyof T> = {
@@ -16,40 +15,40 @@ const TableRows = <T, K extends keyof T>({
     settings: { theme },
   } = useSettingsContext()
 
-  const rows = data.map((row, index) => {
+  const renderedRows = data.map((row, rowIndex) => {
+    const rowClass = `border-double border-b-2 border-sky-500 ${
+      theme !== 'dark' ? 'hover:bg-slate-300' : 'hover:bg-gray-600'
+    }`
+
     return (
-      <tr
-        key={`row-${index}`}
-        className={` border-double border-b-2 border-sky-500 ${
-          theme !== 'dark' ? 'hover:bg-slate-300' : 'hover:bg-gray-600'
-        }`}
-      >
-        {columns.map((column, index2) => {
-          if (
-            Array.isArray(row[column.key]) &&
-            (row[column.key] as Array<keyof T>).length > 0
-          ) {
+      <tr key={`row-${rowIndex}`} className={rowClass}>
+        {columns.map((column, columnIndex) => {
+          const value = row[column.key]
+
+          if (Array.isArray(value) && Array.from(value).some((item) => item)) {
             return (
-              <td key={`cell-${index2}`} className="text-center text-md pt-2">
-                {(row[column.key] as Array<keyof T>).map((item, index) => {
-                  return (
-                    <div
-                      key={`item-${index}`}
-                      className="text-center text-md px-4 py-2 truncate"
-                    >
-                      {item as ReactNode}
-                    </div>
-                  )
-                })}
+              <td
+                key={`cell-${columnIndex}`}
+                className="text-center text-md pt-2"
+              >
+                {Array.from(value).map((item, itemIndex) => (
+                  <div
+                    key={`item-${itemIndex}`}
+                    className="text-center text-md px-4 py-2 truncate"
+                  >
+                    {item as ReactNode}
+                  </div>
+                ))}
               </td>
             )
           }
           return (
-            <td key={`cell-${index2}`} className="text-center text-md pt-2">
+            <td
+              key={`cell-${columnIndex}`}
+              className="text-center text-md pt-2"
+            >
               <div className="text-center text-md pt-2 truncate">
-                {typeof row[column.key] === 'string'
-                  ? (row[column.key] as ReactNode)
-                  : ' - '}
+                {typeof value === 'string' ? (value as ReactNode) : ' - '}
               </div>
             </td>
           )
@@ -58,7 +57,7 @@ const TableRows = <T, K extends keyof T>({
     )
   })
 
-  return <tbody>{rows}</tbody>
+  return <tbody>{renderedRows}</tbody>
 }
 
 export default TableRows
