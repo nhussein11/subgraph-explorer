@@ -29,7 +29,7 @@ const TableRows = <T, K extends keyof T>({
             return (
               <td
                 key={`cell-${columnIndex}`}
-                className="text-center text-md pt-2"
+                className="text-center text-md w-3/6 pt-2"
               >
                 {Array.from(value).map((item, itemIndex) => (
                   <div
