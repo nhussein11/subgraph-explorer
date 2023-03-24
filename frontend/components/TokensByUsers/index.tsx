@@ -3,7 +3,7 @@ import { useQuery } from 'urql'
 import { TokensByUsersQueryDocument } from '@/.graphclient'
 
 import Table, { ColumnDefinitionType } from '@components/ui/Table'
-import { TokensByUsers as TokensByUsersType, TokenTable } from '@/global/types'
+import { TokenTable } from '@/global/types'
 
 const parseTimestamp = (timestamp: number) => {
   return new Date(timestamp * 1000).toLocaleString().split(',')[0]
@@ -42,17 +42,16 @@ export default function TokensByUsers() {
     },
   ]
 
-  const dataTable = data?.users.map((user: TokensByUsersType) => {
-    return {
-      id: user.id,
-      tokenId: user.tokens.map((token) => token.tokenId).slice(0, 10),
-      contentURI: user.tokens.map((token) => token.contentURI).slice(0, 10),
-      createdAtTimestamp: user.tokens
-        .map((token) => parseTimestamp(+token.createdAtTimestamp))
-        .slice(0, 10),
-      metadataURI: user.tokens.map((token) => token.metadataURI).slice(0, 10),
-    }
-  }) as TokenTable[]
+  const dataTable: TokenTable[] =
+    data?.users.map(({ id, tokens }) => ({
+      id,
+      tokenId: tokens.slice(0, 10).map(({ tokenId }) => tokenId),
+      contentURI: tokens.slice(0, 10).map(({ contentURI }) => contentURI),
+      createdAtTimestamp: tokens
+        .slice(0, 10)
+        .map(({ createdAtTimestamp }) => parseTimestamp(+createdAtTimestamp)),
+      metadataURI: tokens.slice(0, 10).map(({ metadataURI }) => metadataURI),
+    })) ?? []
 
   return (
     <div className="container mx-6">
