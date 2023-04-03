@@ -10,6 +10,21 @@ const TableRows = <T, K extends keyof T>({
   data,
   columns,
 }: TableRowsProps<T, K>) => {
+  const handleRowURL = (url: string) => {
+    if (
+      url.startsWith('http') ||
+      url.startsWith('https') ||
+      url.startsWith('ipfs')
+    ) {
+      return (
+        <a href={url} target="_blank" rel="noreferrer">
+          {url}
+        </a>
+      )
+    }
+    return url as ReactNode
+  }
+
   const renderedRows = data.map((row, rowIndex) => {
     const rowClass =
       'border-double border-b-2 border-sky-500 dark:hover:bg-gray-600 hover:bg-slate-300'
@@ -30,7 +45,7 @@ const TableRows = <T, K extends keyof T>({
                     key={`item-${itemIndex}`}
                     className="text-center text-md px-4 py-2 truncate"
                   >
-                    {item as ReactNode}
+                    {typeof item === 'string' ? handleRowURL(item) : ' - '}
                   </div>
                 ))}
               </td>
@@ -42,7 +57,7 @@ const TableRows = <T, K extends keyof T>({
               className="text-center text-md pt-2"
             >
               <div className="text-center text-md pt-2 truncate">
-                {typeof value === 'string' ? (value as ReactNode) : ' - '}
+                {typeof value === 'string' ? handleRowURL(value) : ' - '}
               </div>
             </td>
           )
