@@ -2,7 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body.dark-mode {
+body.dark {
   @apply bg-dark-blue text-white;
 }
 

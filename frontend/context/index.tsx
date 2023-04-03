@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 
 interface ContextProps {
   settings: {
@@ -8,7 +8,7 @@ interface ContextProps {
 }
 
 type SettingsContextProps = {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const SettingsContext = createContext({} as ContextProps)

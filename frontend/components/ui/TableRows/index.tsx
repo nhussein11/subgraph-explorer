@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import { useSettingsContext } from '@/context'
 import { ColumnDefinitionType } from '../Table'
 
 type TableRowsProps<T, K extends keyof T> = {
@@ -11,14 +10,9 @@ const TableRows = <T, K extends keyof T>({
   data,
   columns,
 }: TableRowsProps<T, K>) => {
-  const {
-    settings: { theme },
-  } = useSettingsContext()
-
   const renderedRows = data.map((row, rowIndex) => {
-    const rowClass = `border-double border-b-2 border-sky-500 ${
-      theme !== 'dark' ? 'hover:bg-slate-300' : 'hover:bg-gray-600'
-    }`
+    const rowClass =
+      'border-double border-b-2 border-sky-500 dark:hover:bg-gray-600 hover:bg-slate-300'
 
     return (
       <tr key={`row-${rowIndex}`} className={rowClass}>
