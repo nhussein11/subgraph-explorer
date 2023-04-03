@@ -54,7 +54,7 @@ export default function TokensByUsers() {
     })) ?? []
 
   return (
-    <div className="container mx-6">
+    <div className="container">
       <h2 className="text-2xl font-bold italic mb-5">Tokens by Users</h2>
       <Table data={dataTable || ([] as TokenTable[])} columns={columns} />
     </div>

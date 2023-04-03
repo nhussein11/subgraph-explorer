@@ -5,3 +5,7 @@
 body.dark-mode {
   @apply bg-dark-blue text-white;
 }
+
+body {
+  font-size: 14px;
+}
