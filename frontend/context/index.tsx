@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 
-interface IContextProps {
+interface ContextProps {
   settings: {
     theme: string
   }
@@ -11,7 +11,7 @@ type SettingsContextProps = {
   children: React.ReactNode
 }
 
-export const SettingsContext = createContext({} as IContextProps)
+export const SettingsContext = createContext({} as ContextProps)
 
 export const useSettingsContext = () => useContext(SettingsContext)
 

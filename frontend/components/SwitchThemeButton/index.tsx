@@ -14,11 +14,11 @@ export default function SwitchThemeButton() {
   return (
     <button
       onClick={handleDarkModeToggle}
-      className={`col-end-12 col-span-2 w-16 border-2 rounded-full flex justify-center items-center ${
-        isDarkMode
-          ? 'bg-white text-dark-blue border-black'
-          : 'bg-dark-blue text-white border-white'
-      }`}
+      className={
+        'col-end-12 col-span-2 w-16 border-2 rounded-full flex justify-center items-center\
+          bg-dark-blue text-white border-white\
+          dark:bg-white dark:text-dark-blue dark:border-black'
+      }
     >
       <span>{isDarkMode ? <BiSun /> : <BsMoonStarsFill />}</span>
     </button>
