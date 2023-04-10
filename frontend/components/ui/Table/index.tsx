@@ -15,10 +15,12 @@ export type TableProps<T, K extends keyof T> = {
 
 const Table = <T, K extends keyof T>({ data, columns }: TableProps<T, K>) => (
   <div className="container flex justify-center align-center">
-    <table className="table-auto border-collpase w-full mx-4 mb-6 pb-2">
-      <TableHeader columns={columns} />
-      <TableRows data={data} columns={columns} />
-    </table>
+    <div className="overflow-x-auto">
+      <table className="table-auto border-collpase w-full mx-4 mb-6 pb-2">
+        <TableHeader columns={columns} />
+        <TableRows data={data} columns={columns} />
+      </table>
+    </div>
   </div>
 )
 

@@ -6,16 +6,3 @@ sources:
 
 documents:
   - ./queries/tokens-by-users.graphql
-
-    # transforms:
-    #   - blockTracking:
-    #     validateSchema: true
-
-    # - autopagination:
-    #     validateSchema: true
-    #     limitOfRecords: 3000
-# documents:
-#   - ./queries/tokens-by-users.graphql
-# plugins:
-#   - pollingLive:
-#       defaultInterval: 1000
