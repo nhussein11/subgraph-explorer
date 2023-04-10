@@ -11,15 +11,13 @@ export default function SwitchThemeButton() {
     document.body.classList.toggle('dark')
   }
 
-  return (
-    <button
-      onClick={handleDarkModeToggle}
-      className={
-        'col-end-12 col-span-2 w-16 border-2 rounded-full flex justify-center items-center\
+  const buttonClassname =
+    'col-end-12 col-span-2 w-16 border-2 rounded-full flex justify-center items-center\
           bg-dark-blue text-white border-white\
           dark:bg-white dark:text-dark-blue dark:border-black'
-      }
-    >
+
+  return (
+    <button onClick={handleDarkModeToggle} className={buttonClassname}>
       <span>{isDarkMode ? <BiSun /> : <BsMoonStarsFill />}</span>
     </button>
   )
